@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>China's 2009/10 Generation — Football Analysis</title>
+<style>
+:root{
+  --bg:#060b16; --bg2:#0a1226; --panel:rgba(255,255,255,.04); --line:rgba(255,255,255,.09);
+  --tx:#eef2f8; --tx2:#9aa7bd; --tx3:#5d6b84;
+  --blue:#0D99FF; --green:#00C853; --gold:#FFD23F; --purple:#7B61FF; --red:#FF6B4A;
+  --mono:"Segoe UI", "Microsoft YaHei", sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; background:var(--bg); color:var(--tx); font-family:var(--mono); line-height:1.55; -webkit-font-smoothing:antialiased}
+.bg-glow{position:fixed; inset:0; z-index:-1; pointer-events:none; background:
+  radial-gradient(900px 420px at 85% -10%, rgba(13,153,255,.14), transparent 60%),
+  radial-gradient(700px 380px at -10% 30%, rgba(123,97,255,.10), transparent 60%),
+  radial-gradient(800px 500px at 55% 110%, rgba(0,200,83,.07), transparent 60%),
+  var(--bg);}
+
+/* ---------- hero ---------- */
+.hero{padding:64px 32px 36px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto 0 0 0; height:1px; background:linear-gradient(90deg,transparent,rgba(13,153,255,.5),transparent)}
+.hero-inner{max-width:1180px; margin:0 auto}
+.tag{display:inline-flex; align-items:center; gap:8px; font-size:11px; letter-spacing:2.5px; text-transform:uppercase;
+  color:var(--blue); border:1px solid rgba(13,153,255,.35); background:rgba(13,153,255,.08);
+  padding:5px 14px; border-radius:30px; font-weight:600}
+.tag .dot{width:6px; height:6px; border-radius:50%; background:var(--green); box-shadow:0 0 8px var(--green)}
+h1{font-size:clamp(34px,5.2vw,58px); margin:22px 0 8px; font-weight:800; letter-spacing:-.5px; line-height:1.08}
+h1 .grad{background:linear-gradient(92deg,#0D99FF 10%,#7B61FF 55%,#FFD23F 100%); -webkit-background-clip:text; background-clip:text; color:transparent}
+.hero-sub{color:var(--tx2); font-size:15px; max-width:760px; margin:6px 0 30px}
+.hero-sub b{color:var(--tx)}
+.kpi-strip{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:14px; margin-top:8px}
+.kpi{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:18px 20px; backdrop-filter:blur(8px);
+  transition:transform .18s, border-color .18s}
+.kpi:hover{transform:translateY(-3px); border-color:rgba(13,153,255,.45)}
+.kpi .num{font-size:40px; font-weight:800; letter-spacing:-1px; line-height:1}
+.kpi .lab{font-size:11.5px; color:var(--tx2); margin-top:8px; letter-spacing:.6px; text-transform:uppercase}
+.kpi.blue .num{color:var(--blue)} .kpi.green .num{color:var(--green)}
+.kpi.gold .num{color:var(--gold)} .kpi.purple .num{color:var(--purple)}
+.hero-mini{display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:18px; font-size:12.5px; color:var(--tx3)}
+.hero-mini b{color:var(--tx2); font-weight:600}
+
+/* ---------- sticky nav ---------- */
+nav{position:sticky; top:0; z-index:50; background:rgba(6,11,22,.82); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1180px; margin:0 auto; display:flex; gap:4px; overflow-x:auto; padding:10px 20px; scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+nav a{color:var(--tx2); text-decoration:none; font-size:12.5px; padding:7px 13px; border-radius:20px; white-space:nowrap; transition:.15s}
+nav a:hover{color:var(--tx); background:rgba(255,255,255,.07)}
+nav a:first-child{color:var(--blue); font-weight:700}
+
+/* ---------- sections ---------- */
+main{max-width:1180px; margin:0 auto; padding:34px 20px 80px}
+.sec-title{display:flex; align-items:center; gap:12px; margin:44px 0 18px}
+.sec-title .no{font-size:12px; color:var(--blue); border:1px solid rgba(13,153,255,.4); border-radius:8px; padding:3px 9px; font-weight:700}
+.sec-title h2{margin:0; font-size:22px; font-weight:750; letter-spacing:.3px}
+.sec-title .line{flex:1; height:1px; background:linear-gradient(90deg,var(--line),transparent)}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px}
+@media (max-width:900px){ .grid2{grid-template-columns:1fr} }
+
+.card{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:18px 20px 14px;
+  transition:border-color .18s, transform .18s; scroll-margin-top:70px}
+.card:hover{border-color:rgba(255,255,255,.16)}
+.cbar{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px}
+.ct{display:flex; align-items:center; gap:9px; font-size:14px; font-weight:650; letter-spacing:.2px}
+.ct .ci{width:8px; height:8px; border-radius:3px; background:linear-gradient(135deg,var(--blue),var(--purple)); box-shadow:0 0 10px rgba(13,153,255,.5)}
+.ct .sub{font-size:11px; color:var(--tx3); font-weight:400}
+.btn{background:rgba(13,153,255,.14); color:var(--blue); border:1px solid rgba(13,153,255,.35); border-radius:8px;
+  padding:4px 12px; font-size:11.5px; cursor:pointer; transition:.15s; font-family:var(--mono)}
+.btn:hover{background:rgba(13,153,255,.26)}
+.chart{width:100%; height:340px}
+
+/* FM rank grid */
+.fm-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:16px}
+
+/* ---------- impact table ---------- */
+.tbl-wrap{overflow-x:auto; border-radius:14px; border:1px solid var(--line)}
+table.tbl{width:100%; border-collapse:collapse; font-size:13px}
+.tbl th{background:rgba(255,255,255,.05); color:var(--tx2); font-weight:600; font-size:11.5px; text-transform:uppercase;
+  letter-spacing:.8px; padding:11px 14px; text-align:left; border-bottom:1px solid var(--line); white-space:nowrap}
+.tbl td{padding:10px 14px; border-bottom:1px solid rgba(255,255,255,.05); color:var(--tx2)}
+.tbl tr:hover td{background:rgba(13,153,255,.06); color:var(--tx)}
+.tbl tr.top3 td{background:rgba(255,210,63,.06)}
+.tbl tr.top3 td:first-child{color:var(--gold); font-weight:800}
+.tbl .num{text-align:right; font-variant-numeric:tabular-nums}
+.tbl .num b{color:var(--tx)}
+
+/* ---------- profiles ---------- */
+.prof-toolbar{position:sticky; top:58px; z-index:40; display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+  background:rgba(6,11,22,.85); backdrop-filter:blur(12px); border:1px solid var(--line); border-radius:16px;
+  padding:14px 16px; margin:10px 0 18px}
+.prof-toolbar input[type=text]{flex:1 1 200px; min-width:150px; background:rgba(255,255,255,.05); border:1px solid var(--line);
+  color:var(--tx); border-radius:10px; padding:9px 14px; font-size:13px; outline:none; font-family:var(--mono)}
+.prof-toolbar input[type=text]:focus{border-color:var(--blue)}
+.prof-toolbar select{background:rgba(255,255,255,.05); border:1px solid var(--line); color:var(--tx); border-radius:10px;
+  padding:9px 10px; font-size:12.5px; outline:none; cursor:pointer; font-family:var(--mono)}
+.prof-toolbar select option{background:#0a1226; color:var(--tx)}
+.dir-btn{width:38px; height:37px; border-radius:10px; border:1px solid var(--line); background:rgba(255,255,255,.05);
+  color:var(--tx2); cursor:pointer; font-size:15px; transition:.15s}
+.dir-btn:hover{border-color:var(--blue); color:var(--blue)}
+.chips{display:flex; gap:6px; flex-wrap:wrap}
+.chip{padding:6px 13px; border-radius:20px; font-size:12px; border:1px solid var(--line); color:var(--tx2);
+  background:transparent; cursor:pointer; transition:.15s; font-family:var(--mono)}
+.chip:hover{color:var(--tx); border-color:rgba(255,255,255,.25)}
+.chip.on{background:rgba(13,153,255,.18); border-color:var(--blue); color:var(--blue); font-weight:650}
+/* position dropdown */
+.pos-dd{position:relative}
+.pos-btn{background:rgba(255,255,255,.05); border:1px solid var(--line); color:var(--tx); border-radius:10px;
+  padding:9px 14px; font-size:12.5px; cursor:pointer; font-family:var(--mono); white-space:nowrap; transition:border-color .15s}
+.pos-btn:hover{border-color:var(--blue)}
+.pos-menu{position:absolute; top:calc(100% + 6px); left:0; z-index:60; min-width:240px; background:#0c1428;
+  border:1px solid var(--line); border-radius:12px; padding:6px; box-shadow:0 18px 50px rgba(0,0,0,.5);
+  display:none; max-height:400px; overflow:auto; scrollbar-width:thin; scrollbar-color:#33405c transparent}
+.pos-menu.show{display:block}
+.pos-i{display:block; width:100%; text-align:left; background:none; border:none; color:var(--tx3); font-size:12px;
+  padding:6px 12px; cursor:pointer; border-radius:7px; font-family:var(--mono); transition:.12s}
+.pos-i:hover{background:rgba(13,153,255,.12); color:var(--tx)}
+.pos-i.on{color:var(--blue); font-weight:650}
+.pos-i.top{color:var(--tx2); border-bottom:1px solid var(--line); border-radius:0; margin-bottom:4px; padding:7px 10px}
+.pos-i.top.on{color:var(--blue)}
+.pos-g{display:flex; width:100%; align-items:center; gap:8px; background:none; border:none; color:var(--tx2);
+  font-size:12.5px; padding:8px 10px; cursor:pointer; border-radius:8px; text-align:left; font-family:var(--mono); transition:.12s}
+.pos-g:hover{background:rgba(255,255,255,.06); color:var(--tx)}
+.pos-g .arr{color:var(--tx3); font-size:10px; width:12px; transition:transform .15s; flex-shrink:0}
+.pos-g.on{color:var(--blue); font-weight:650}
+.pos-group.open .pos-g .arr{transform:rotate(90deg)}
+.pos-items{display:none; padding-left:10px}
+.pos-group.open .pos-items{display:block}
+.pos-count{font-size:10.5px; color:var(--tx3); margin-left:auto}
+.pos-items .pos-i{display:flex; justify-content:space-between}
+.pd-count{font-size:12px; color:var(--tx3); margin-left:auto; white-space:nowrap}
+.pd-count b{color:var(--blue)}
+
+.pd-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(225px,1fr)); gap:14px}
+.pd-card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:14px 15px 12px; cursor:pointer;
+  position:relative; transition:transform .16s, border-color .16s, box-shadow .16s; overflow:hidden}
+.pd-card::before{content:""; position:absolute; inset:0 0 auto 0; height:2px; background:linear-gradient(90deg,var(--blue),var(--purple));
+  opacity:0; transition:opacity .16s}
+.pd-card:hover{transform:translateY(-3px); border-color:rgba(13,153,255,.5); box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.pd-card:hover::before{opacity:1}
+.pd-top{display:flex; align-items:center; gap:10px}
+.pd-ph{width:42px; height:42px; border-radius:50%; overflow:hidden; flex-shrink:0; background:linear-gradient(135deg,#1c2a44,#24385e);
+  display:flex; align-items:center; justify-content:center; font-weight:700; font-size:17px; color:#7fa8d9}
+.pd-ph img{width:100%; height:100%; object-fit:cover}
+.pd-nm{flex:1; min-width:0}
+.pd-nm .nm{font-size:14px; font-weight:700; color:var(--tx); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.pd-nm .meta{font-size:11.5px; color:var(--tx3); margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.pd-pot{font-size:12.5px; color:var(--gold); font-weight:700; flex-shrink:0}
+.pd-row{display:flex; align-items:baseline; gap:10px; margin-top:10px; padding-top:9px; border-top:1px dashed rgba(255,255,255,.08);
+  font-size:12px; color:var(--tx2); font-variant-numeric:tabular-nums}
+.pd-row .stat{font-weight:700; font-size:13.5px; color:var(--tx)}
+.pd-row .stat.g{color:var(--green)} .pd-row .stat.b{color:var(--blue)} .pd-row .stat.r{color:var(--red)}
+/* 评估行：色点 + 短词（取代胶囊标签） */
+.pd-eval{display:flex; align-items:center; flex-wrap:wrap; gap:7px 10px; margin-top:9px; min-height:15px}
+.pd-eval .ev{display:inline-flex; align-items:center; gap:5px; font-size:10.5px; font-weight:650; color:var(--tx2); letter-spacing:.2px}
+.pd-eval .dot{width:7px; height:7px; border-radius:50%; display:inline-block; flex-shrink:0}
+.pd-eval .note{color:var(--blue); font-size:12px; cursor:default}
+
+/* ---------- modal ---------- */
+.pd-overlay{position:fixed; inset:0; background:rgba(3,6,14,.7); backdrop-filter:blur(6px); display:none;
+  align-items:flex-start; justify-content:center; z-index:100; padding:34px 14px; overflow:auto}
+.pd-overlay.show{display:flex}
+.pd-modal{background:linear-gradient(180deg,#0c1428,#0a1122); border:1px solid var(--line); border-radius:18px;
+  max-width:780px; width:100%; padding:26px 28px; box-shadow:0 24px 70px rgba(0,0,0,.5); position:relative; animation:pop .18s ease}
+@keyframes pop{from{opacity:0; transform:translateY(12px) scale(.985)} to{opacity:1; transform:none}}
+.pd-modal .cls{position:absolute; top:14px; right:16px; border:1px solid var(--line); background:rgba(255,255,255,.06);
+  border-radius:50%; width:32px; height:32px; font-size:14px; cursor:pointer; color:var(--tx2); transition:.15s}
+.pd-modal .cls:hover{color:var(--tx); background:rgba(255,255,255,.14)}
+.pm-head{display:flex; gap:16px; align-items:flex-start; padding-right:36px}
+.pm-ph{width:76px; height:76px; border-radius:18px; overflow:hidden; flex-shrink:0; background:linear-gradient(135deg,#1c2a44,#24385e);
+  display:flex; align-items:center; justify-content:center; font-size:30px; font-weight:800; color:#7fa8d9}
+.pm-ph img{width:100%; height:100%; object-fit:cover}
+.pm-id{flex:1; min-width:0}
+.pm-name{font-size:23px; font-weight:800; letter-spacing:-.3px; margin:0}
+.pm-name .stars{color:var(--gold); font-size:15px; letter-spacing:2px; vertical-align:2px}
+.pm-meta{font-size:12.5px; color:var(--tx2); margin-top:4px; display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+.nt-badge{font-size:10px; font-weight:700; letter-spacing:.5px; padding:2px 9px; border-radius:12px;
+  background:rgba(0,200,83,.13); color:#4ade80; border:1px solid rgba(0,200,83,.35)}
+/* 评估条：替代头部胶囊标签，结构化四格仪表盘 */
+.pm-strip{display:grid; grid-template-columns:repeat(auto-fit,minmax(118px,1fr)); gap:10px; margin-top:14px}
+.pm-cell{background:rgba(255,255,255,.035); border:1px solid var(--line); border-radius:12px; padding:10px 13px 11px;
+  transition:border-color .15s}
+.pm-cell:hover{border-color:rgba(255,255,255,.22)}
+.pm-cell .pk{font-size:9.5px; letter-spacing:1.3px; text-transform:uppercase; color:var(--tx3); font-weight:650}
+.pm-cell .pv{font-size:15.5px; font-weight:750; margin-top:5px; line-height:1.15}
+.pm-cell .pv small{font-size:10px; font-weight:600; opacity:.75; margin-left:4px}
+.pm-rt{flex-shrink:0; text-align:center; background:rgba(255,255,255,.045); border:1px solid var(--line); border-radius:14px;
+  padding:12px 16px 10px; min-width:96px}
+.pm-rt .big{font-size:30px; font-weight:800; line-height:1}
+.pm-rt .sm{font-size:10.5px; color:var(--tx3); margin-top:5px; line-height:1.4}
+.pm-sec{background:rgba(255,255,255,.035); border:1px solid var(--line); border-radius:13px; padding:14px 16px; margin-top:14px}
+.pm-sec h4{margin:0 0 9px; font-size:12px; color:var(--blue); letter-spacing:1.4px; text-transform:uppercase; font-weight:700}
+.pm-grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+@media (max-width:640px){ .pm-grid2{grid-template-columns:1fr} }
+.pm-rows{display:grid; grid-template-columns:1fr 1fr; gap:6px 18px; font-size:13px; line-height:1.85}
+.pm-rows b{color:var(--tx); font-weight:600}
+.pm-rows .v{color:var(--tx2)}
+.pm-assess{display:grid; grid-template-columns:1fr 1fr; gap:9px}
+.pm-assess .cell{background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:10px; padding:10px 13px}
+.pm-assess .k{font-size:10.5px; color:var(--tx3); letter-spacing:1px; text-transform:uppercase}
+.pm-assess .v2{font-size:15px; font-weight:700; margin-top:3px}
+.pm-foot{font-size:11px; color:var(--tx3); margin-top:16px; padding-top:12px; border-top:1px solid var(--line)}
+.attr-chips{display:flex; flex-wrap:wrap; gap:6px}
+.attr-chip{display:inline-block; font-size:12px; color:#fff; padding:3px 11px; border-radius:12px; font-weight:600}
+.imp-wrap{max-height:430px; overflow-y:auto; margin:6px 2px 2px; scrollbar-width:thin; scrollbar-color:#33405c transparent}
+footer{max-width:1180px; margin:0 auto; padding:26px 20px 60px; color:var(--tx3); font-size:12px;
+  border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:8px 24px; justify-content:space-between}
+footer a{color:var(--blue); text-decoration:none}
+</style>
+</head>
+
+<body>
+<div class="bg-glow"></div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="tag"><span class="dot"></span>2009/10 Cohort · Data 2026-09-18</div>
+    <h1>China's 2009/10 <span class="grad">Generation Tracked</span></h1>
+    <p class="hero-sub"><b>131 qualified talents</b></p>
+    <div class="kpi-strip" id="kpis"></div>
+    <div class="hero-mini" id="heroMini"></div>
+  </div>
+</header>
+
+<nav><div class="nav-inner">
+  <a href="#top">Overview</a>
+  <a href="#exp-card">Experience</a>
+  <a href="#pos-card">Positions</a>
+  <a href="#nt-card">National</a>
+  <a href="#gs-card">Standing</a>
+  <a href="#eu-card">Europe</a>
+  <a href="#rt-card">Ratings</a>
+  <a href="#impact">Impact</a>
+  <a href="#profiles">Profiles</a>
+</div></nav>
+
+<main id="top">
+  <div class="sec-title" style="margin-top:6px"><span class="no">01</span><h2>Season Overview</h2><span class="line"></span></div>
+  <div class="grid2">
+    <div class="card" id="exp-card">
+      <div class="cbar"><div class="ct"><span class="ci"></span>Experience vs Regulars <span class="sub">CSL · CL1</span></div><button class="btn" data-chart="chartFoot">PNG</button></div>
+      <div id="chartFoot" class="chart"></div>
+    </div>
+    <div class="card" id="league-card">
+      <div class="cbar"><div class="ct"><span class="ci"></span>League Distribution <span class="sub">2026 season</span></div><button class="btn" data-chart="chartLeague">PNG</button></div>
+      <div id="chartLeague" class="chart"></div>
+    </div>
+  </div>
+
+  <div class="sec-title"><span class="no">02</span><h2>Positional Profile</h2><span class="line"></span></div>
+  <div class="grid2">
+    <div class="card" id="pos-card">
+      <div class="cbar"><div class="ct"><span class="ci"></span>Position Distribution <span class="sub">detailed</span></div><button class="btn" data-chart="chartPos">PNG</button></div>
+      <div id="chartPos" class="chart"></div>
+    </div>
+    <div class="card" id="posgood-card">
+      <div class="cbar"><div class="ct"><span class="ci"></span>Position Strength <span class="sub">mid or higher</span></div><button class="btn" data-chart="chartPosGood">PNG</button></div>
+      <div id="chartPosGood" class="chart"></div>
+    </div>
+  </div>
+
+  <div class="sec-title"><span class="no">03</span><h2>National Team &amp; Standing</h2><span class="line"></span></div>
+  <div class="grid2">
+    <div class="card" id="nt-card">
+      <div class="cbar"><div class="ct"><span class="ci"></span>National-Team Coverage <span class="sub">multi-count</span></div><button class="btn" data-chart="chartNt">PNG</button></div>
+      <div id="chartNt" class="chart"></div>
+    </div>
+    <div class="card" id="gs-card">
+      <div class="cbar"><div class="ct"><span class="ci"></span>Generation Standing</div><button class="btn" data-chart="chartGs">PNG</button></div>
+      <div id="chartGs" class="chart"></div>
+    </div>
+  </div>
+
+  <div class="sec-title"><span class="no">04</span><h2>Europe Readiness</h2><span class="line"></span></div>
+  <div class="grid2">
+    <div class="card" id="eu-card">
+      <div class="cbar"><div class="ct"><span class="ci"></span>Europe Readiness × Potential</div><button class="btn" data-chart="chartEurope">PNG</button></div>
+      <div id="chartEurope" class="chart"></div>
+    </div>
+    <div class="card" id="pot-card">
+      <div class="cbar"><div class="ct"><span class="ci"></span>Potential Ladder</div><button class="btn" data-chart="chartPot">PNG</button></div>
+      <div id="chartPot" class="chart"></div>
+    </div>
+  </div>
+
+  <div class="sec-title"><span class="no">05</span><h2>Playing Time</h2><span class="line"></span></div>
+  <div class="grid2">
+    <div class="card" id="top-card">
+      <div class="cbar"><div class="ct"><span class="ci"></span>Top 15 by Minutes</div><button class="btn" data-chart="chartTop">PNG</button></div>
+      <div id="chartTop" class="chart"></div>
+    </div>
+    <div class="card" id="postime-card">
+      <div class="cbar"><div class="ct"><span class="ci"></span>Playing Time by Position <span class="sub">CSL · CL1</span></div><button class="btn" data-chart="chartPosTime">PNG</button></div>
+      <div id="chartPosTime" class="chart"></div>
+    </div>
+  </div>
+
+  <div class="sec-title"><span class="no">06</span><h2>FotMob Ratings</h2><span class="line"></span></div>
+  <div class="grid2">
+    <div class="card" id="rt-card">
+      <div class="cbar"><div class="ct"><span class="ci"></span>2026 CSL Ratings <span class="sub">FotMob avg</span></div><button class="btn" data-chart="chartRating">PNG</button></div>
+      <div id="chartRating" class="chart"></div>
+    </div>
+    <div class="card" id="scat-card">
+      <div class="cbar"><div class="ct"><span class="ci"></span>Minutes × Rating <span class="sub">by position</span></div><button class="btn" data-chart="chartScatter">PNG</button></div>
+      <div id="chartScatter" class="chart"></div>
+    </div>
+  </div>
+
+  <div class="sec-title"><span class="no">07</span><h2>FotMob Section Rankings</h2><span class="line"></span></div>
+  <div class="fm-grid" id="fmRankGrid"></div>
+
+  <div class="sec-title" id="impact"><span class="no">08</span><h2>Impact Ranking</h2><span class="line"></span>
+    <button class="btn" id="impactExport">PNG</button></div>
+  <div class="tbl-wrap" id="impactTable">
+    <table class="tbl">
+      <thead><tr><th>#</th><th>Player</th><th>Pos</th><th>Apps</th><th>Minutes</th><th>Rating</th><th>Score</th><th>Adj</th></tr></thead>
+      <tbody id="impactBody"></tbody>
+    </table>
+  </div>
+
+  <div class="sec-title" id="profiles"><span class="no">09</span><h2>Player Profiles</h2><span class="line"></span></div>
+  <div class="prof-toolbar">
+    <input type="text" id="pdSearch" placeholder="Search name / club / position…">
+    <select id="pdSort">
+      <option value="default">Default order</option>
+      <option value="pot">★ Potential</option>
+      <option value="rating">Rating (FotMob)</option>
+      <option value="apps">Apps</option>
+      <option value="mins">Minutes</option>
+      <option value="name">Name (A–Z)</option>
+    </select>
+    <button class="dir-btn" id="pdDir" title="Direction">↓</button>
+    <div class="pos-dd">
+      <button class="pos-btn" id="pdPosBtn" type="button">Position: All ▾</button>
+      <div class="pos-menu" id="pdPosMenu">
+        <button class="pos-i top" type="button" data-pos="All">All Positions</button>
+        <div id="pdPosGroups"></div>
+      </div>
+    </div>
+    <select id="pdGs">
+      <option value="All">Standing: All</option>
+      <option value="Leader">Leader</option>
+      <option value="Leading">Leading</option>
+      <option value="Mid">Mid</option>
+      <option value="Behind">Behind</option>
+      <option value="Slump">Slump</option>
+    </select>
+    <span class="pd-count" id="pdCount"></span>
+  </div>
+  <div class="pd-grid" id="pdGrid"></div>
+</main>
+
+<footer>
+  <span>Sources: Transfermarkt · FotMob · manual assessment · data updated 2026-09-18</span>
+  <span><a href="#top">Back to top ↑</a></span>
+</footer>
+
+<div class="pd-overlay" id="pdOverlay"><div class="pd-modal" id="pdModal"></div></div>
+
+<script src="../assets/echarts.min.js"></script>
+<script src="../assets/html2canvas.min.js"></script>
+<script>const DATA = {"kpi": {"total": 131, "cs_ever": 1, "c1_ever": 2, "cs_foot": 1, "c1_foot": 1, "gs_good": 30, "ep_good": 20, "nt": 90, "pot": 25}, "foot": {"cat": ["CSL", "CL1"], "ever": [1, 2], "foot": [1, 1]}, "league_dist": [{"name": "None/Youth", "value": 82}, {"name": "Abroad", "value": 23}, {"name": "CL2", "value": 15}, {"name": "CSL", "value": 8}, {"name": "CL1", "value": 3}], "pos_fine": [{"name": "Goalkeeper", "value": 18, "major": "Goalkeeper"}, {"name": "Centre-Back", "value": 19, "major": "Defender"}, {"name": "Left-Back", "value": 8, "major": "Defender"}, {"name": "Right-Back", "value": 11, "major": "Defender"}, {"name": "Defender (n/a)", "value": 2, "major": "Defender"}, {"name": "Defensive Midfield", "value": 0, "major": "Midfielder"}, {"name": "Central Midfield", "value": 25, "major": "Midfielder"}, {"name": "Attacking Midfield", "value": 11, "major": "Midfielder"}, {"name": "Left Midfield", "value": 0, "major": "Midfielder"}, {"name": "Midfield (n/a)", "value": 1, "major": "Midfielder"}, {"name": "Left Winger", "value": 12, "major": "Forward"}, {"name": "Right Winger", "value": 6, "major": "Forward"}, {"name": "Centre-Forward", "value": 15, "major": "Forward"}, {"name": "Second Striker", "value": 0, "major": "Forward"}, {"name": "Attack (n/a)", "value": 3, "major": "Forward"}], "pos_major": ["Goalkeeper", "Defender", "Midfielder", "Forward"], "pos_all": [18, 40, 37, 36], "pos_good": [5, 5, 7, 13], "nt_cov": [{"name": "SENIOR", "value": 1}, {"name": "U23", "value": 0}, {"name": "U22", "value": 0}, {"name": "U21", "value": 0}, {"name": "U20", "value": 0}, {"name": "U19", "value": 0}, {"name": "U18", "value": 0}, {"name": "U17", "value": 39}, {"name": "U16", "value": 76}], "gs_dist": [{"name": "(blank)", "value": 99}, {"name": "Mid", "value": 18}, {"name": "Leading", "value": 8}, {"name": "Leader", "value": 4}, {"name": "Slump", "value": 2}], "er_dist": [{"name": "(blank)", "value": 101}, {"name": "Immature", "value": 28}, {"name": "Opportunity", "value": 2}], "ep_dist": [{"name": "(blank)", "value": 101}, {"name": "Opportunity", "value": 15}, {"name": "Unclear", "value": 10}, {"name": "Likely", "value": 3}, {"name": "Almost certain", "value": 2}], "pot_data": [{"name": "N/A", "value": 106}, {"name": "2.5-3", "value": 3}, {"name": "3", "value": 4}, {"name": "3-3.5", "value": 6}, {"name": "3.5", "value": 5}, {"name": "3.5-4", "value": 5}, {"name": "4", "value": 1}, {"name": "4-4.5", "value": 1}], "top15": [{"name": "Kuang Zhaolei", "min": 65}, {"name": "Weihao Shuai", "min": 0}, {"name": "Li Jiarun", "min": 0}, {"name": "Gong Haoren", "min": 0}, {"name": "Jin Guancheng", "min": 0}, {"name": "He Sifan", "min": 0}, {"name": "Wan Xiang", "min": 0}, {"name": "Liang Shiyu", "min": 0}, {"name": "Deng Junxi", "min": 0}, {"name": "Lu Junbo", "min": 0}, {"name": "Kong Xinuo", "min": 0}, {"name": "Lu Qizheng", "min": 0}, {"name": "Li Junpeng", "min": 0}, {"name": "Li Mingjie", "min": 0}, {"name": "Mao Yongbin", "min": 0}], "ratings": [{"name": "Kuang Zhaolei", "rating": 6.05, "n": 2, "team": "Qingdao Hainiu", "min": 56, "pos": "Right Winger", "major": "Forward"}], "players_detail": [{"name": "Weihao Shuai", "pos": "Centre-Forward", "major": "Forward", "club": "CD Rongcheng", "league": "CSL", "apps": 0, "birth": "2009", "height": "178", "foot": "right", "gs": "Leading", "ep": "Unclear", "er": "Immature", "pot": "3.5", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "盘带+无球跑动+高位压迫+逆足；决策-", "overview": "", "photo": "../images/players_0910/Weihao_Shuai.png", "cur_break": [{"comp": "China League Two B", "apps": 6, "goals": 1, "assists": 0, "min": 408}]}, {"name": "Kuang Zhaolei", "pos": "Right Winger", "major": "Forward", "club": "QD Hainiu", "league": "CSL", "apps": 5, "birth": "2009", "height": "172", "foot": "right", "gs": "Leading", "ep": "Opportunity", "er": "Immature", "pot": "3-3.5", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 65, "c1_mins": 0, "rating": 6.05, "rating_n": 2, "rating_team": "Qingdao Hainiu", "rating_min": 56, "fstats": null, "attrs": "工作投入++高位压迫+加速+盘带+控球+威胁传球+逆足+侵略性+；绝对速度-决策-黏球-", "overview": "技术均衡，能力全面，且职业性出色的边锋，或许有边后卫的潜力", "photo": "../images/players_0910/Kuang_Zhaolei.png", "cur_break": [{"comp": "Chinese Super League", "apps": 5, "goals": 0, "assists": 0, "min": 65}]}, {"name": "Li Jiarun", "pos": "Right Winger", "major": "Forward", "club": "MZ Hakka", "league": "CL1", "apps": 13, "birth": "2009", "height": "175", "foot": "", "gs": "Leader", "ep": "Likely", "er": "Immature", "pot": "3.5-4", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 597, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "加速能力++传中++盘带+敏捷性+逆足+侵略性+", "overview": "极具威胁的边路爆点，创造威胁能力强", "photo": "../images/players_0910/Li_Jiarun.jpeg", "cur_break": [{"comp": "China League One", "apps": 13, "goals": 1, "assists": 2, "min": 597}]}, {"name": "Gong Haoren", "pos": "Centre-Forward", "major": "Forward", "club": "AJ Auxerre U19", "league": "Abroad", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": [{"comp": "Championnat National U17 - Groupe C", "apps": 1, "goals": 0, "assists": 0, "min": 1}]}, {"name": "Jin Guancheng", "pos": "Centre-Forward", "major": "Forward", "club": "Ulsan HD U18", "league": "Abroad", "apps": 0, "birth": "2009", "height": "186", "foot": "", "gs": "Mid", "ep": "Opportunity", "er": "Immature", "pot": "3.5", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "PHYSICALITY ++ HOLD-UP PLAY ++ DRIBBLING + LINK-UP PLAY + KEY PASSING + FINISHING + OFF-BALL MOVEMENT + PRESSING + VERSALITY + WEAK FOOT + DECISION MAKING - BALANCE - AGILITY -", "overview": "Jin GuanCheng’s outstanding hold-up play and link-up ability are among his biggest strengths. Standing at 191cm with a strong physical frame, he consistently has the advantage in duels against defenders. After holding off opponents, he usually makes reasonable decisions with his lay-offs and can create opportunities for his teammates. These qualities suggest that he could develop into an excellent target forward._x000B__x000B_Jin GuanCheng’s dribbling is not elite, but it is still impressive, especially for a striker of his size. When facing limited defensive pressure, he is capable of using his dribbling ability to create chances. However, compared to his dribbling, his close control is slightly weaker. His finishing is also a notable weapon: he can threaten through physical battles and positioning inside the box, while also possessing the ability to shoot from distance. Surprisingly, his passing is another strong aspect of his game. His through balls can be dangerous, and his timing of passes shows good vision and creativity. However, against higher-level opponents, his decision-making is still immature at times. He can be slightly rushed in his choices and waste potential opportunities. Moreover, Jin is two-footed, which enhances his finishing ability._x000B__x000B_Physically, Jin GuanCheng’s biggest advantage is his strength and ability in duels. His stamina is decent, but he does not possess outstanding pace. His main weaknesses are balance and agility, which affect his ability to carry the ball forward. His speed of execution in tight areas is also somewhat limited, making him more likely to lose possession under pressure. However, this is understandable given his physical profile._x000B__x000B_Jin GuanCheng also shows intelligent movement off the ball. He not only knows how to attack scoring opportunities but can also drag defenders out of position and create space for teammates. His work rate and coverage are impressive: he contributes effectively to high pressing and can also drop deeper into midfield to help progress the ball. At times, he has even been deployed as an attacking midfielder for China U17 and performed well in that role._x000B__x000B_Over the past two seasons, Jin GuanCheng scored 47 goals in 26 appearances for Ulsan Hyundai U15. This year, he scored 4 goals in 6 appearances for U17 before being promoted to the U18 squad, where he has already scored once in 5 matches. If his development continues, we may see him make his first-team debut in the near future.", "photo": "../images/players_0910/Jin_Guancheng.png", "cur_break": []}, {"name": "He Sifan", "pos": "Left Winger", "major": "Forward", "club": "WH 3 Towns B", "league": "CL2", "apps": 3, "birth": "2009", "height": "", "foot": "", "gs": "Mid", "ep": "Opportunity", "er": "Immature", "pot": "3-3.5", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/He_Sifan.png", "cur_break": [{"comp": "China League Two B", "apps": 3, "goals": 2, "assists": 0, "min": 176}]}, {"name": "Wan Xiang", "pos": "Attacking Midfield", "major": "Midfielder", "club": "Red Star U19", "league": "Abroad", "apps": 8, "birth": "2009", "height": "", "foot": "", "gs": "Leader", "ep": "Almost certain", "er": "Opportunity", "pot": "4", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "威胁传球++组织能力++视野++决策+控球+盘带+全面性+短传配合+无球跑动+定位球+侵略性+；防守站位-进攻选择-", "overview": "前场/后场组织核心", "photo": "../images/players_0910/Wan_Xiang.png", "cur_break": [{"comp": "Kadetska liga Srbije", "apps": 8, "goals": 0, "assists": 0, "min": 346}]}, {"name": "Liang Shiyu", "pos": "Left Winger", "major": "Forward", "club": "WH 3Towns Youth", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "Mid", "ep": "Opportunity", "er": "Immature", "pot": "3-3.5", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Liang_Shiyu.jpeg", "cur_break": []}, {"name": "Deng Junxi", "pos": "Central Midfield", "major": "Midfielder", "club": "LN Tieren Yth", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Selected"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Lu Junbo", "pos": "Central Midfield", "major": "Midfielder", "club": "SD Luneng SC", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "167", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Kong Xinuo", "pos": "Central Midfield", "major": "Midfielder", "club": "SD Luneng SC", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Kong_Xinuo.png", "cur_break": []}, {"name": "Lu Qizheng", "pos": "Centre-Back", "major": "Defender", "club": "Evergrande FS", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "183", "foot": "", "gs": "Slump", "ep": "Opportunity", "er": "Immature", "pot": "3-3.5", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "很优秀而全能的现代中卫，身体与技术均出众，曾因恶劣的桃色事件遭遇国家队开除与冷处理，可能影响生涯", "photo": "../images/players_0910/Lu_Qizheng.jpeg", "cur_break": []}, {"name": "Li Junpeng", "pos": "Centre-Back", "major": "Defender", "club": "SD Taishan B", "league": "CL2", "apps": 6, "birth": "2009", "height": "183", "foot": "", "gs": "Mid", "ep": "Opportunity", "er": "Immature", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Li_Junpeng.png", "cur_break": [{"comp": "China League Two A", "apps": 6, "goals": 1, "assists": 0, "min": 349}]}, {"name": "Li Mingjie", "pos": "Right-Back", "major": "Defender", "club": "SH Port Youth", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "160", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Li_Mingjie.png", "cur_break": []}, {"name": "Mao Yongbin", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "SH Port Youth", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Zhang Junhao", "pos": "Right-Back", "major": "Defender", "club": "SD Luneng SC", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Xu Zhengpeng", "pos": "Central Midfield", "major": "Midfielder", "club": "WH Three Towns", "league": "CSL", "apps": 0, "birth": "2009", "height": "", "foot": "right", "gs": "Mid", "ep": "Opportunity", "er": "Immature", "pot": "3.5", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "长传++视野+直塞球+控球+；敏捷性-逆足-防守意识-", "overview": "", "photo": "../images/players_0910/Xu_Zhengpeng.png", "cur_break": [{"comp": "China League Two B", "apps": 5, "goals": 0, "assists": 0, "min": 358}]}, {"name": "Huang Tianyi", "pos": "Centre-Forward", "major": "Forward", "club": "WH 3Towns Youth", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Zhao Songyuan", "pos": "Centre-Forward", "major": "Forward", "club": "Tsinghua Uni HS", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "194", "foot": "", "gs": "Leader", "ep": "Almost certain", "er": "Opportunity", "pot": "4-4.5", "nt": {"Senior": "Selected", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Selected"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "全面性++盘带++头球++远射++视野+支点能力+威胁传球+创造力+回撤能力+无球跑动+高位压迫+身体+；逆足-平衡-", "overview": "", "photo": "../images/players_0910/Zhao_Songyuan.png", "cur_break": []}, {"name": "Xu Qizhen", "pos": "Right Winger", "major": "Forward", "club": "SH Port Youth", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Wang Xiuhao", "pos": "Right-Back", "major": "Defender", "club": "CF Badalona You", "league": "Abroad", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "Mid", "ep": "Unclear", "er": "Immature", "pot": "3", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Selected", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Wang_Xiuhao.jpeg", "cur_break": []}, {"name": "Tan Yujin", "pos": "Attacking Midfield", "major": "Midfielder", "club": "Chongqing FA", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "He Linfei", "pos": "Right Winger", "major": "Forward", "club": "CD Derui", "league": "CL2", "apps": 2, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": [{"comp": "China League Two B", "apps": 2, "goals": 0, "assists": 0, "min": 15}]}, {"name": "Dai Youzhe", "pos": "Right-Back", "major": "Defender", "club": "UE Sant Andreu (ESP)", "league": "Abroad", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Li Yi", "pos": "Centre-Back", "major": "Defender", "club": "Zhejiang Youth", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Huang Zijie", "pos": "Left-Back", "major": "Defender", "club": "CF Badalona You", "league": "Abroad", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "Mid", "ep": "Unclear", "er": "Immature", "pot": "3", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Huang_Zijie.jpeg", "cur_break": []}, {"name": "Li Guannan", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "SY Starry", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "174", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Yu Tanbo", "pos": "Defender", "major": "Defender", "club": "WH 3 Towns B", "league": "CL2", "apps": 3, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": [{"comp": "China League Two B", "apps": 3, "goals": 0, "assists": 0, "min": 77}]}, {"name": "Xu Zengfu", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "SD Luneng SC", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "Mid", "ep": "Opportunity", "er": "Immature", "pot": "3.5", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Zhang Xuyao", "pos": "Left-Back", "major": "Defender", "club": "SD Taishan B", "league": "CL2", "apps": 6, "birth": "2009", "height": "177", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Zhang_Xuyao.png", "cur_break": [{"comp": "China League Two A", "apps": 6, "goals": 0, "assists": 0, "min": 69}]}, {"name": "Song Jiacheng", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "Zhejiang Youth", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Li Qifu", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "WH Huajing", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Shi Zimo", "pos": "Centre-Back", "major": "Defender", "club": "MZ Hakka Youth", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Selected"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Yu Jia'nan", "pos": "Right-Back", "major": "Defender", "club": "Evergrande FS", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Selected"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Norsi Enwer", "pos": "Left Winger", "major": "Forward", "club": "Evergrande FS", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Elkem Ilhon", "pos": "Central Midfield", "major": "Midfielder", "club": "Evergrande FS", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Wang Feiniya", "pos": "Centre-Forward", "major": "Forward", "club": "Evergrande FS", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "Slump", "ep": "Unclear", "er": "Immature", "pot": "2.5-3", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Wang_Feiniya.jpeg", "cur_break": []}, {"name": "Cheng Shenghan", "pos": "Centre-Back", "major": "Defender", "club": "HB Istar Youth", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Cheng_Shenghan.png", "cur_break": []}, {"name": "Li Cheng", "pos": "Left Winger", "major": "Forward", "club": "HB Istar U20", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Selected"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Zhou Yunuo", "pos": "Central Midfield", "major": "Midfielder", "club": "Tsinghua Uni HS", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "Mid", "ep": "Opportunity", "er": "Immature", "pot": "3-3.5", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Zhou_Yunuo.png", "cur_break": []}, {"name": "Nan Zixun", "pos": "Centre-Back", "major": "Defender", "club": "Tsinghua Uni HS", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Nan_Zixun.png", "cur_break": []}, {"name": "Xie Jin", "pos": "Right Winger", "major": "Forward", "club": "Unknown", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "Leading", "ep": "Likely", "er": "Immature", "pot": "3.5-4", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Xie_Jin.png", "cur_break": []}, {"name": "Luo Z.", "pos": "Defender", "major": "Defender", "club": "TSG Wieseck U19", "league": "Abroad", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": [{"comp": "U17 DFB-Nachwuchsliga - Hauptrunde Liga B", "apps": 6, "goals": 0, "assists": 0, "min": 257}]}, {"name": "Xiao Chenxi", "pos": "Attacking Midfield", "major": "Midfielder", "club": "SD Taishan B", "league": "CL2", "apps": 2, "birth": "2009", "height": "177", "foot": "", "gs": "Mid", "ep": "Unclear", "er": "Immature", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": [{"comp": "China League Two A", "apps": 2, "goals": 0, "assists": 0, "min": 16}]}, {"name": "Bian Weihao", "pos": "Centre-Back", "major": "Defender", "club": "HB Istar", "league": "CL2", "apps": 2, "birth": "2009", "height": "", "foot": "", "gs": "Mid", "ep": "Unclear", "er": "Immature", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Unknown"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": [{"comp": "China League Two B", "apps": 2, "goals": 0, "assists": 0, "min": 12}]}, {"name": "Zhang Bolin", "pos": "Centre-Forward", "major": "Forward", "club": "HB Istar", "league": "CL2", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "Mid", "ep": "Unclear", "er": "Immature", "pot": "3", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "身体+", "overview": "心脏有问题，可能会影响职业生涯", "photo": "../images/players_0910/Zhang_Bolin.png", "cur_break": []}, {"name": "Li Qiufu", "pos": "Centre-Back", "major": "Defender", "club": "SH Port U20", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Selected", "U16": "Unknown"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Qin Ziniu", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "Evergrande FS", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "Mid", "ep": "Unclear", "er": "Immature", "pot": "2.5-3", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Selected"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "意外性+", "overview": "", "photo": "../images/players_0910/Qin_Ziniu.png", "cur_break": []}, {"name": "Gu Boyu", "pos": "Centre-Back", "major": "Defender", "club": "SH Shenhua U20", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Selected", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "El'Ares Umurbek", "pos": "Centre-Forward", "major": "Forward", "club": "JS Anbest", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "165", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Jiang Jingqi", "pos": "Central Midfield", "major": "Midfielder", "club": "E. Cottbus U19", "league": "Abroad", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "https://img.a.transfermarkt.technology/portrait/big/1414506-1766864489.jpg?lm=4711", "cur_break": [{"comp": "U17 DFB-Nachwuchsliga - Vorrunde Gruppe B", "apps": 8, "goals": 1, "assists": 1, "min": 431}, {"comp": "U17 DFB-Nachwuchsliga - Hauptrunde Liga A", "apps": 7, "goals": 0, "assists": 0, "min": 454}]}, {"name": "Quan Tianhai", "pos": "Attack", "major": "Forward", "club": "Frontale U18", "league": "Abroad", "apps": 0, "birth": "2009", "height": "167", "foot": "right", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": [{"comp": "Prince Takamado U18 Premier League East", "apps": 8, "goals": 1, "assists": 0, "min": 370}]}, {"name": "Jin Yucheng", "pos": "Right-Back", "major": "Defender", "club": "Lokomotiva U19", "league": "Abroad", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "Mid", "ep": "Opportunity", "er": "Immature", "pot": "2.5-3", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Jin_Yucheng.png", "cur_break": []}, {"name": "Zhou Yucheng", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "Jiangsu", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Selected"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Kuang Zihao", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "SZ 2028 U17", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Selected"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Huang Zezhi", "pos": "Attacking Midfield", "major": "Midfielder", "club": "Lee Man U22", "league": "Abroad", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Cao Yu", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "BJ Guoan Youth", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Unknown"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Wang Heyi", "pos": "Left Winger", "major": "Forward", "club": "GD GZ-Power", "league": "CL1", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "Mid", "ep": "Unclear", "er": "Immature", "pot": "3", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Unknown"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Wang_Heyi.png", "cur_break": []}, {"name": "Chen Bingxi", "pos": "Central Midfield", "major": "Midfielder", "club": "Tsinghua Uni HS", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Unknown"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Jin Feng", "pos": "Right-Back", "major": "Defender", "club": "Jiangsu", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Unknown"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Jin_Feng.png", "cur_break": []}, {"name": "Sun Chenxi", "pos": "Attacking Midfield", "major": "Midfielder", "club": "GD Mingtu", "league": "CL2", "apps": 15, "birth": "2009", "height": "170", "foot": "", "gs": "Leading", "ep": "Opportunity", "er": "Immature", "pot": "3-3.5", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Unknown"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "盘带++敏捷性+控球+短传出球+高位压迫+；逆足-射门-力量-身体-", "overview": "小技术细腻，小空间处理球能力强，小范围出球，摘刀山球能力出众，身体素质不足", "photo": "", "cur_break": [{"comp": "China League Two B", "apps": 15, "goals": 1, "assists": 0, "min": 635}]}, {"name": "Wang Yiming", "pos": "Left-Back", "major": "Defender", "club": "HB Istar", "league": "CL2", "apps": 0, "birth": "2009", "height": "170", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Unknown"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Liu Zhicheng", "pos": "Centre-Back", "major": "Defender", "club": "QD West Coast", "league": "CSL", "apps": 0, "birth": "2009", "height": "193", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Selected", "U16": "Unknown"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Zhu Yuxuan", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "HB Istar Youth", "league": "Abroad", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "Mid", "ep": "Unclear", "er": "Immature", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Selected", "U16": "Unknown"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Jin Junhu", "pos": "Midfield", "major": "Midfielder", "club": "S.Bluewings U18", "league": "Abroad", "apps": 0, "birth": "2010", "height": "174", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Zhang Lintong", "pos": "Central Midfield", "major": "Midfielder", "club": "CF Damm Youth", "league": "Abroad", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Yanhong Chang-Zeng", "pos": "Left Winger", "major": "Forward", "club": "CQ Fengxiang", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Selected"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Tan Xichun", "pos": "Central Midfield", "major": "Midfielder", "club": "GZ Qasf", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Selected"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Wu Zhenle", "pos": "Centre-Back", "major": "Defender", "club": "GZ Qasf", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Selected"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Zhang Yuanfeng", "pos": "Central Midfield", "major": "Midfielder", "club": "Evergrande FS", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Selected"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Zhang Huibo", "pos": "Right-Back", "major": "Defender", "club": "Qingdao FA", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Selected"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Chen Zhengfei", "pos": "Centre-Forward", "major": "Forward", "club": "SZ Juniors Yth", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Selected"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Li Guoda", "pos": "Attack", "major": "Forward", "club": "MZ Hakka Youth", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Selected"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Jiang Yuhan", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "QD Hainiu", "league": "CSL", "apps": 0, "birth": "2010", "height": "191", "foot": "", "gs": "Leading", "ep": "Opportunity", "er": "Immature", "pot": "3.5-4", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Selected"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Jiang_Yuhan.jpeg", "cur_break": []}, {"name": "Zhang Shuhang", "pos": "Central Midfield", "major": "Midfielder", "club": "TJ JMT Youth", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Chen Wentai", "pos": "Central Midfield", "major": "Midfielder", "club": "GD Mingtu", "league": "CL2", "apps": 1, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": [{"comp": "China League Two B", "apps": 1, "goals": 0, "assists": 0, "min": 4}]}, {"name": "Liu Yucheng", "pos": "Right-Back", "major": "Defender", "club": "CD Rongch. Yth", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Li Jiajin", "pos": "Left Winger", "major": "Forward", "club": "SD Luneng SC", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "Mid", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Liu Kaiyuan", "pos": "Left Winger", "major": "Forward", "club": "Villarreal Yth.", "league": "Abroad", "apps": 0, "birth": "2010", "height": "182", "foot": "", "gs": "Leading", "ep": "Opportunity", "er": "Immature", "pot": "3.5-4", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Liu_Kaiyuan.jpeg", "cur_break": []}, {"name": "Lü Jiaan", "pos": "Attacking Midfield", "major": "Midfielder", "club": "BJ Guoan Youth", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Jin Gengkui", "pos": "Attack", "major": "Forward", "club": "SH Port Youth", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Peng Xianchen", "pos": "Attacking Midfield", "major": "Midfielder", "club": "YX ZT Jiuteng", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "Mid", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Unknown"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Peng_Xianchen.jpeg", "cur_break": []}, {"name": "Zhu Jiajun", "pos": "Central Midfield", "major": "Midfielder", "club": "Zhejiang Youth", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Wang Jiaxiang", "pos": "Central Midfield", "major": "Midfielder", "club": "SH Shenhua Yth.", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Selected"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Sheng Chenxi", "pos": "Central Midfield", "major": "Midfielder", "club": "SH Shenhua Yth.", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Yang Chenshuo", "pos": "Left-Back", "major": "Defender", "club": "SD Luneng SC", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Ji Zhenghao", "pos": "Centre-Back", "major": "Defender", "club": "SD Luneng SC", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Zhang Yichi", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "Tsinghua Uni HS", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Wang Changyu", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "Tsinghua Uni HS", "league": "Abroad", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Liu Yuyang", "pos": "Centre-Forward", "major": "Forward", "club": "SZ Longhua", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Chen Chengyun", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "F. Marinos U18", "league": "Abroad", "apps": 0, "birth": "2010", "height": "182", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Selected", "U16": "Unknown"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Piao Zhixuan", "pos": "Central Midfield", "major": "Midfielder", "club": "DL Yingbo U19", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Li Youan", "pos": "Central Midfield", "major": "Midfielder", "club": "HS RUC", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Bai Huajun", "pos": "Centre-Back", "major": "Defender", "club": "CQ Nankai MS", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Xu Zhongqi", "pos": "Centre-Back", "major": "Defender", "club": "Unknown", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Yang Rongkai", "pos": "Left Winger", "major": "Forward", "club": "Tsinghua Uni HS", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Cheng Junhan", "pos": "Right-Back", "major": "Defender", "club": "Tsinghua Uni HS", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Yuan Bohan", "pos": "Right Winger", "major": "Forward", "club": "SZ Juniors", "league": "CL1", "apps": 3, "birth": "2010", "height": "", "foot": "", "gs": "Leader", "ep": "Likely", "er": "Immature", "pot": "3.5-4", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Unknown"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 24, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "爆发力++盘带++敏捷性射门+侵略性+拦截+决策+全面性+", "overview": "除开强大的边路爆破能力外，他在门前传球与打门的选择非常聪明，决策能力出众，同时，尽管表现地像个特点鲜明的边路爆破手，袁博涵的组织能力与前场逼抢能力其实也值得注意，除开边路爆破手外，他也完全可以胜任全能前锋", "photo": "", "cur_break": [{"comp": "China League One", "apps": 3, "goals": 0, "assists": 0, "min": 24}]}, {"name": "Jiang Cheng'en", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "HB Istar", "league": "CL2", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "Leading", "ep": "Opportunity", "er": "Immature", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "../images/players_0910/Jiang_Cheng_en.jpeg", "cur_break": []}, {"name": "Ke Bowen", "pos": "Centre-Forward", "major": "Forward", "club": "Evergrande FS", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Appeared"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Peng Xiran", "pos": "Central Midfield", "major": "Midfielder", "club": "SD Luneng SC", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Pan Chaowei", "pos": "Central Midfield", "major": "Midfielder", "club": "SD Luneng SC", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "Leading", "ep": "Opportunity", "er": "Immature", "pot": "3.5", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Appeared", "U16": "Unknown"}, "nt_highest": "U17", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "战术执行+侵略性+工作投入+防守意识+；进攻能力-向前传球-", "overview": "", "photo": "../images/players_0910/Pan_Chaowei.png", "cur_break": []}, {"name": "Jiang Leshang", "pos": "Right-Back", "major": "Defender", "club": "SD Luneng SC", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Gao Zeen", "pos": "Left Winger", "major": "Forward", "club": "HB Istar Youth", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Su Ziyi", "pos": "Left-Back", "major": "Defender", "club": "BJ Guoan Youth", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Li Yuxuan", "pos": "Attacking Midfield", "major": "Midfielder", "club": "SZ P. City Yth", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Yang Yihuan", "pos": "Centre-Back", "major": "Defender", "club": "CD Rongch. Yth", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Wu Bile", "pos": "Attacking Midfield", "major": "Midfielder", "club": "CD Rongch. Yth", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Zheng Kangjin", "pos": "Left Winger", "major": "Forward", "club": "SH Shenhua Yth.", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Zhou Chuxiang", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "SH Shenhua Yth.", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Selected"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Wei Jiaye", "pos": "Centre-Forward", "major": "Forward", "club": "SH Shenhua Yth.", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Li Yuanxi", "pos": "Left-Back", "major": "Defender", "club": "SH Shenhua Yth.", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Li Dongchen", "pos": "Centre-Back", "major": "Defender", "club": "CE Europa Youth", "league": "Abroad", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Appeared"}, "nt_highest": "U16", "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Lü Rongte", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "WH 3 Towns B", "league": "CL2", "apps": 0, "birth": "2009", "height": "180", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Liu Chenghao", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "SHJD Huil. Yth.", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Lin Hanqi", "pos": "Left-Back", "major": "Defender", "club": "BJ Guoan", "league": "CSL", "apps": 0, "birth": "2009", "height": "165", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Gao Yuechen", "pos": "Left-Back", "major": "Defender", "club": "DL Longjuanfeng", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "180", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Zhao Guancheng", "pos": "Centre-Back", "major": "Defender", "club": "SD Taishan B", "league": "CL2", "apps": 0, "birth": "2009", "height": "183", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Huang Junxuan", "pos": "Centre-Back", "major": "Defender", "club": "SZ 2028", "league": "CL2", "apps": 0, "birth": "2010", "height": "183", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Shi Ziqian", "pos": "Central Midfield", "major": "Midfielder", "club": "SH Shenhua U19", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "178", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Wang Size", "pos": "Central Midfield", "major": "Midfielder", "club": "BJ Guoan", "league": "CSL", "apps": 0, "birth": "2009", "height": "181", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Zheng Zhi", "pos": "Central Midfield", "major": "Midfielder", "club": "CD Yuhui Rende", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "185", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Chen Kelong", "pos": "Central Midfield", "major": "Midfielder", "club": "WH Huajing", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "172", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Musajan Ehmet", "pos": "Attacking Midfield", "major": "Midfielder", "club": "Unknown", "league": "Abroad", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Ma Mingyang", "pos": "Centre-Forward", "major": "Forward", "club": "BJ Guoan", "league": "CSL", "apps": 0, "birth": "2009", "height": "183", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Li Zijun", "pos": "Centre-Forward", "major": "Forward", "club": "HB Istar U20", "league": "None/Youth", "apps": 0, "birth": "2009", "height": "171", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Ma Tianhao", "pos": "Centre-Back", "major": "Defender", "club": "Evergrande Football School", "league": "None/Youth", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Wang Ziquan", "pos": "Central Midfield", "major": "Midfielder", "club": "KS Blonianka (POL)", "league": "Abroad", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Lü Mengyang", "pos": "Attacking Midfield", "major": "Midfielder", "club": "Espanyol U19B (ESP)", "league": "Abroad", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Zhang Bojia", "pos": "Centre-Forward", "major": "Forward", "club": "Alcobendas U19A (ESP)", "league": "Abroad", "apps": 0, "birth": "2009", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}, {"name": "Jin Zhihu", "pos": "Left Winger", "major": "Forward", "club": "S.Bluewings U18", "league": "Abroad", "apps": 0, "birth": "2010", "height": "", "foot": "", "gs": "", "ep": "", "er": "", "pot": "", "nt": {"Senior": "Unknown", "U23": "Unknown", "U22": "Unknown", "U21": "Unknown", "U20": "Unknown", "U19": "Unknown", "U18": "Unknown", "U17": "Unknown", "U16": "Unknown"}, "nt_highest": null, "cs_mins": 0, "c1_mins": 0, "rating": null, "rating_n": null, "rating_team": null, "rating_min": null, "fstats": null, "attrs": "", "overview": "", "photo": "", "cur_break": []}], "pos_time": {"majors": ["Goalkeeper", "Defender", "Midfielder", "Forward"], "cs": [0, 0, 0, 65], "c1": [0, 0, 0, 621]}, "sec_rank": {}, "generated": "2026-09-18"};</script>
+<script>
+const charts = {};
+function mk(id, opt){ charts[id] = echarts.init(document.getElementById(id), "dark"); charts[id].setOption(opt); }
+const EXP_BG = "#0a1120";
+document.addEventListener("click", e => {
+  const b = e.target.closest(".btn[data-chart]");
+  if (!b) return;
+  const id = b.getAttribute("data-chart");
+  const ch = charts[id];
+  if (!ch) return;
+  const url = ch.getDataURL({type:"png", pixelRatio:2, backgroundColor:EXP_BG});
+  const a = document.createElement("a"); a.href = url; a.download = id + ".png"; a.click();
+});
+
+// KPI
+const k = DATA.kpi;
+document.getElementById("kpis").innerHTML = [
+  ["Total players", k.total, "blue"],
+  ["CSL experience", k.cs_ever, "blue"],
+  ["CL1 experience", k.c1_ever, "purple"],
+  ["National-team exp.", k.nt, "green"],
+].map(([lab, num, cls]) => `<div class="kpi ${cls}"><div class="num">${num}</div><div class="lab">${lab}</div></div>`).join("");
+document.getElementById("heroMini").innerHTML =
+  `<span><b>${k.cs_foot}</b> CSL regulars</span>` +
+  `<span><b>${k.c1_foot}</b> CL1 regulars</span>` +
+  `<span><b>${k.gs_good}</b> Mid or higher</span>` +
+  `<span><b>${k.pot}</b> Europe potential</span>`;
+
+const GS_COLOR = {"Leader":"#00C853","Leading":"#2E7D32","Mid":"#FFC107","Slump":"#FF6B4A","Behind":"#9E9E9E","(blank)":"#55637D"};
+const POS_COLOR = {"Goalkeeper":"#36A2EB","Defender":"#4CAF50","Midfielder":"#FF9800","Forward":"#F44336"};
+const leagueMap = {"CSL":"#0D99FF","CL1":"#FFB300","CL2":"#7CB342","Abroad":"#B08CFF","None/Youth":"#55637d"};
+// 统一评估色板（跨世代一致）：red = unclear / grey = no data
+const ER_COLOR = {"Mature":"#00C853","Opportunity":"#FFD23F","Immature":"#8A93A6","Unclear":"#FF4D4F","(blank)":"#55637D"};
+const EP_COLOR = {"Almost certain":"#00C853","Likely":"#6FCF6F","Opportunity":"#FFD23F","Unclear":"#FF4D4F","Immature":"#8A93A6","(blank)":"#55637D"};
+
+// 1 Experience vs Regulars
+mk("chartFoot", {
+  tooltip:{}, legend:{top:0, textStyle:{color:"#9aa7bd"}}, grid:{left:60,right:30,top:50,bottom:40},
+  xAxis:{type:"category", data:DATA.foot.cat, axisLabel:{fontSize:13}},
+  yAxis:{type:"value", name:"Players", nameGap:14},
+  series:[
+    {name:"Have played (career apps>0)", type:"bar", data:DATA.foot.ever, itemStyle:{color:"#7FA8D9"}, barWidth:46, label:{show:true,position:"top"}},
+    {name:"Regulars (>=10 in a season / >=5 this yr)", type:"bar", data:DATA.foot.foot, itemStyle:{color:"#0D99FF"}, barWidth:46, label:{show:true,position:"top"}}
+  ]
+});
+// 2 Current season league distribution
+mk("chartLeague", {
+  tooltip:{trigger:"item", formatter:"{b}: {c} players ({d}%)"},
+  legend:{bottom:0, textStyle:{color:"#9aa7bd"}},
+  series:[{type:"pie", radius:["38%","66%"], center:["50%","44%"],
+    data:DATA.league_dist.map(d=>({name:d.name,value:d.value,itemStyle:{color:leagueMap[d.name]||"#888"}})),
+    label:{formatter:"{b}: {c}", color:"#c9d4e6"}, labelLine:{lineStyle:{color:"rgba(255,255,255,.25)"}}}]
+});
+// 3 Position distribution
+const posFine = DATA.pos_fine.filter(d=>d.value>0);
+mk("chartPos", {
+  tooltip:{}, grid:{left:70,right:20,top:30,bottom:95},
+  xAxis:{type:"category", data:posFine.map(d=>d.name), axisLabel:{rotate:35, fontSize:10.5}},
+  yAxis:{type:"value", name:"Players", nameGap:14},
+  series:[{type:"bar", barWidth:34, data:posFine.map(d=>({value:d.value, itemStyle:{color:POS_COLOR[d.major]||"#888"}})),
+    label:{show:true, position:"top"}}]
+});
+// 4 Position strength
+mk("chartPosGood", {
+  tooltip:{}, legend:{top:0, textStyle:{color:"#9aa7bd"}}, grid:{left:60,right:20,top:45,bottom:40},
+  xAxis:{type:"category", data:DATA.pos_major},
+  yAxis:{type:"value", name:"Players", nameGap:14},
+  series:[
+    {name:"Mid or higher", type:"bar", stack:"t", data:DATA.pos_good, itemStyle:{color:"#FFC107"}},
+    {name:"Others", type:"bar", stack:"t", data:DATA.pos_major.map((n,i)=>DATA.pos_all[i]-DATA.pos_good[i]), itemStyle:{color:"#33405C"}}
+  ]
+});
+// 5 National team coverage
+mk("chartNt", {
+  tooltip:{formatter: p => `${p.name}: ${p.value} players`},
+  grid:{left:70,right:20,top:30,bottom:40},
+  xAxis:{type:"category", data:DATA.nt_cov.map(d=>d.name)},
+  yAxis:{type:"value", name:"Players", nameGap:14},
+  series:[{type:"bar", barWidth:36, data:DATA.nt_cov.map(d=>d.value), itemStyle:{color:"#7B61FF"}, label:{show:true,position:"top"}}]
+});
+// 6 Generation Standing
+mk("chartGs", {
+  tooltip:{trigger:"item", formatter:"{b}: {c} players ({d}%)"},
+  legend:{bottom:0, textStyle:{color:"#9aa7bd"}},
+  series:[{type:"pie", radius:["38%","66%"], center:["50%","44%"],
+    data:DATA.gs_dist.map(d=>({name:d.name,value:d.value,itemStyle:{color:GS_COLOR[d.name]||"#888"}})),
+    label:{formatter:"{b}: {c}", color:"#c9d4e6"}, labelLine:{lineStyle:{color:"rgba(255,255,255,.25)"}}}]
+});
+// 7 Europe readiness + potential
+mk("chartEurope", {
+  tooltip:{trigger:"item", formatter:"{a}: {b} {c} ({d}%)"},
+  legend:{bottom:0, textStyle:{color:"#9aa7bd"}},
+  series:[
+    {name:"Europe Readiness", type:"pie", radius:["20%","40%"], center:["50%","42%"],
+     data:DATA.er_dist.map(d=>({name:d.name,value:d.value,itemStyle:{color:ER_COLOR[d.name]||"#55637D"}})), label:{formatter:"{b}: {c}", fontSize:10.5, color:"#c9d4e6"}},
+    {name:"Europe Potential", type:"pie", radius:["48%","68%"], center:["50%","42%"],
+     data:DATA.ep_dist.map(d=>({name:d.name,value:d.value,itemStyle:{color:EP_COLOR[d.name]||"#55637D"}})), label:{formatter:"{b}: {c}", fontSize:10.5, color:"#c9d4e6"}}
+  ]
+});
+// 8 Potential ladder
+mk("chartPot", {
+  tooltip:{}, grid:{left:65,right:20,top:30,bottom:65},
+  xAxis:{type:"category", data:DATA.pot_data.map(d=>d.name), axisLabel:{rotate:30, fontSize:10.5}},
+  yAxis:{type:"value", name:"Players", nameGap:14},
+  series:[{type:"bar", barWidth:36, data:DATA.pot_data.map(d=>d.value), itemStyle:{color:"#FFD23F"}, label:{show:true,position:"top"}}]
+});
+// 9 Top 15 minutes
+mk("chartTop", {
+  tooltip:{}, grid:{left:120,right:40,top:20,bottom:28},
+  xAxis:{type:"value", name:"Minutes"},
+  yAxis:{type:"category", data:DATA.top15.map(d=>d.name).reverse(), axisLabel:{fontSize:11}},
+  series:[{type:"bar", data:DATA.top15.map(d=>d.min).reverse(), itemStyle:{color:"#0D99FF"}, label:{show:true,position:"right",fontSize:11}}]
+});
+// 10 Playing time by position
+mk("chartPosTime", {
+  tooltip:{}, legend:{top:0, textStyle:{color:"#9aa7bd"}}, grid:{left:60,right:20,top:45,bottom:40},
+  xAxis:{type:"category", data:DATA.pos_time.majors, axisLabel:{fontSize:12.5}},
+  yAxis:{type:"value", name:"Minutes", nameGap:14},
+  series:[
+    {name:"CSL", type:"bar", stack:"t", data:DATA.pos_time.cs, itemStyle:{color:"#0D99FF"}},
+    {name:"CL1", type:"bar", stack:"t", data:DATA.pos_time.c1, itemStyle:{color:"#FFB300"}}
+  ]
+});
+// 11 FotMob ratings
+const ratData = DATA.ratings || [];
+if (ratData.length) {
+  const ratColor = v => v >= 7 ? "#00C853" : (v >= 6.5 ? "#0D99FF" : "#FF6B4A");
+  mk("chartRating", {
+    tooltip:{formatter: p => `${p.name}: ${p.value} (${p.data.n} apps · ${p.data.team})`},
+    grid:{left:120,right:55,top:20,bottom:28},
+    xAxis:{type:"value", min:5.5, max:7.5, name:"Avg rating"},
+    yAxis:{type:"category", data:ratData.map(d=>d.name).reverse(), axisLabel:{fontSize:11}},
+    series:[{type:"bar", barWidth:14,
+      data:ratData.map(d=>({value:d.rating, name:d.name, n:d.n, team:d.team, itemStyle:{color:ratColor(d.rating)}})).reverse(),
+      label:{show:true, position:"right", formatter: p=>`${p.value}`, fontSize:11}}]
+  });
+}
+// 12 Minutes x rating scatter
+const scatData = ratData.filter(d => d.rating != null && d.min > 0);
+const scatMajors = [...new Set(scatData.map(d => d.major))].filter(Boolean);
+if (scatMajors.length) {
+  mk("chartScatter", {
+    tooltip:{formatter: p => `${p.data.name}: ${p.data.rating} pts / ${p.data.min} min (${p.data.n} apps · ${p.data.team})`},
+    legend:{bottom:0, textStyle:{color:"#9aa7bd"}},
+    grid:{left:65,right:30,top:30,bottom:75},
+    xAxis:{type:"value", name:"2026 CSL minutes", nameLocation:"middle", nameGap:32, scale:true},
+    yAxis:{type:"value", name:"Avg rating", nameGap:14, min:5.5, max:7.6},
+    series: scatMajors.map((m, i) => ({
+      name:m, type:"scatter", symbolSize:15,
+      data: scatData.filter(d=>d.major===m).map(d=>({value:[d.min, d.rating], name:d.name, rating:d.rating, min:d.min, n:d.n, team:d.team})),
+      itemStyle:{color: POS_COLOR[m] || "#888"},
+      label:{show:true, formatter: p=>p.data.name, position:"top", fontSize:9, color:"#c9d4e6"},
+      markLine: i === 0 ? {silent:true, symbol:"none", lineStyle:{type:"dashed", color:"#55637d"},
+        data:[{yAxis:6.5}], label:{formatter:"6.5", position:"insideEndTop", fontSize:10}} : undefined
+    }))
+  });
+}
+// FM section rankings
+const fmRanks = DATA.sec_rank || {};
+const fmOrder = ["Shooting", "Passing", "Possession", "Defending", "Discipline", "Goalkeeping", "Distribution"];
+const FM_SMALL_SAMPLE = 6;
+const fmGrid = document.getElementById("fmRankGrid");
+fmOrder.forEach(sec => {
+  const d = fmRanks[sec];
+  if (!d || !d.players.length) return;
+  const card = document.createElement("div");
+  card.className = "card";
+  card.id = "card-fm-" + sec;
+  const top = d.players.slice(0, 10).reverse();
+  const label = top.map(x => `${x.name}${x.apps != null && x.apps < FM_SMALL_SAMPLE ? " ⚠" : ""}${x.pos ? " · " + x.pos.split(" ")[0] : ""}`);
+  card.innerHTML = `<div class="cbar"><div class="ct"><span class="ci"></span>${sec} — Top 10 <span class="sub">avg of ${d.metrics.length} metrics${d.note ? " · " + d.note : ""}</span></div><button class="btn" data-chart="fm-${sec}">PNG</button></div><div id="fm-${sec}" class="chart"></div>`;
+  fmGrid.appendChild(card);
+  mk("fm-" + sec, {
+    tooltip: {formatter: p => `${p.name}: ${p.value} (${p.data.n}/${p.data.t} metrics${p.data.apps != null ? " · " + p.data.apps + " apps" : ""}${p.data.score != null ? " · score " + p.data.score : ""}${p.data.apps != null && p.data.apps < FM_SMALL_SAMPLE ? " · ⚠ small sample" : ""})`},
+    grid: {left: 120, right: 50, top: 15, bottom: 28},
+    xAxis: {type: "value", name: "norm rank", inverse: true},
+    yAxis: {type: "category", data: label, axisLabel: {fontSize: 11}},
+    series: [{type: "bar", barWidth: 13,
+      data: top.map(x => ({value: x.avg_rank, name: x.name, n: x.n_metrics, t: d.metrics.length, apps: x.apps, score: x.score})),
+      itemStyle: {color: "#7B61FF"},
+      label: {show: true, position: "right", formatter: p => p.value, fontSize: 11}}]
+  });
+});
+window.addEventListener("resize", () => Object.values(charts).forEach(c => c.resize()));
+
+// ================= Impact table =================
+(function(){
+  const rows = (DATA.ratings || [])
+    .filter(d => d.rating != null && d.min > 0)
+    .map(d => {
+      const adj = (d.rating - 6.0) * d.min;
+      return {name: d.name, pos: d.pos || "", team: d.team || "", n: d.n || 0,
+              min: d.min, rating: d.rating, score: d.min * d.rating, adj: adj};
+    })
+    .sort((a, b) => b.score - a.score);
+  const body = document.getElementById("impactBody");
+  if (!body) return;
+  body.innerHTML = rows.map((r, i) => {
+    const small = r.n < 6;
+    const fmt = v => Math.round(v).toLocaleString();
+    const adjCls = r.adj >= 0 ? "" : " style='color:#FF6B4A'";
+    return `<tr class="${i < 3 ? "top3" : ""}">
+      <td class="num">${i + 1}</td>
+      <td>${r.name}${small ? " ⚠" : ""}</td>
+      <td>${r.pos.split(" ")[0] || "-"}</td>
+      <td class="num">${r.n}</td>
+      <td class="num">${fmt(r.min)}</td>
+      <td class="num">${r.rating}</td>
+      <td class="num"><b>${fmt(r.score)}</b></td>
+      <td class="num"${adjCls}>${fmt(r.adj)}</td>
+    </tr>`;
+  }).join("");
+  const btn = document.getElementById("impactExport");
+  if (btn) btn.addEventListener("click", () => {
+    const el = document.getElementById("impactTable");
+    if (!el || typeof html2canvas === "undefined") return;
+    html2canvas(el, {backgroundColor: "#0b1224", scale: 2}).then(canvas => {
+      const a = document.createElement("a");
+      a.href = canvas.toDataURL("image/png");
+      a.download = "impact_ranking.png";
+      a.click();
+    });
+  });
+})();
+</script>
+<script>
+// ================= Player Profiles (v2) =================
+const pd = DATA.players_detail || [];
+const pdRatingColor = v => v >= 7 ? "#00C853" : (v >= 6.5 ? "#0D99FF" : "#FF6B4A");
+function pdStars(pot){
+  if (!pot) return "";
+  const m = pot.match(/^(\d+(?:\.\d+)?)$/);
+  if (m){
+    const half = Math.round(parseFloat(m[1]) * 2);
+    const full = Math.floor(half / 2);
+    return "★".repeat(full) + (half % 2 ? "½" : "") + "☆".repeat(Math.max(0, 5 - Math.ceil(half / 2)));
+  }
+  return "";
+}
+const parsePot = pot => pot ? parseFloat(pot) : -1;
+const pdMins = p => (p.cs_mins || 0) + (p.c1_mins || 0);
+function pdPhoto(p, size, cls){
+  const ph = p.photo
+    ? `<div class="${cls}" style="width:${size}px;height:${size}px"><img src="${p.photo}" alt="${p.name}" loading="lazy" onerror="this.parentNode.innerHTML='${(p.name||'?').charAt(0).toUpperCase()}'"></div>`
+    : `<div class="${cls}" style="width:${size}px;height:${size}px">${(p.name||"?").charAt(0).toUpperCase()}</div>`;
+  return ph;
+}
+function pdEvalHTML(p){
+  // 评估行：色点 + 词。GS 恒显；Readiness/Potential 仅非默认档显示（突出亮点）
+  // R = Europe Readiness，P = Europe Potential（同档词区分维度）
+  const parts = [];
+  if (p.gs) parts.push(`<span class="ev"><i class="dot" style="background:${GS_COLOR[p.gs] || "#9aa7bd"}"></i>${p.gs}</span>`);
+  if (p.er && p.er !== "Immature" && p.er !== "Unclear")
+    parts.push(`<span class="ev"><i class="dot" style="background:${ER_COLOR[p.er] || "#9aa7bd"}"></i>R ${p.er}</span>`);
+  if (p.ep && p.ep !== "Unclear" && p.ep !== "Immature")
+    parts.push(`<span class="ev"><i class="dot" style="background:${EP_COLOR[p.ep] || "#9aa7bd"}"></i>P ${p.ep}</span>`);
+  if (p.attrs || p.overview) parts.push(`<span class="ev note" title="Scouting note">✎</span>`);
+  return parts.join("");
+}
+function pdCardHTML(p){
+  const hasRt = p.rating != null;
+  const mins = pdMins(p);
+  const stars = pdStars(p.pot);
+  const statLine = [
+    `<span class="stat">${p.apps || 0}</span> apps`,
+    hasRt ? `<span class="stat ${p.rating >= 7 ? "g" : p.rating >= 6.5 ? "b" : "r"}">${p.rating}</span> rating` : `<span class="stat b">—</span>`,
+    `<span>${mins.toLocaleString()}</span> min`
+  ].join("  ·  ");
+  return `<div class="pd-card" data-name="${p.name}" data-pot="${p.potNum}" data-rating="${p.ratingNum}" data-apps="${p.apps || 0}" data-min="${mins}">
+    <div class="pd-top">
+      ${pdPhoto(p, 42, "pd-ph")}
+      <div class="pd-nm">
+        <div class="nm">${p.name}</div>
+        <div class="meta">${displayPos(p)} · ${p.club || "-"}</div>
+      </div>
+      ${p.pot ? `<div class="pd-pot" title="Potential ${p.pot}">★ ${p.pot}</div>` : ""}
+    </div>
+    <div class="pd-row">${statLine}</div>
+    <div class="pd-eval">${pdEvalHTML(p)}</div>
+  </div>`;
+}
+const state = { q:"", sort:"default", dir:1, pos:"All", posMajor:null, gs:"All" };
+const SORTERS = {
+  default: (a, b) => a._i - b._i,
+  pot:     (a, b) => b.potNum - a.potNum,
+  rating:  (a, b) => b.ratingNum - a.ratingNum,
+  apps:    (a, b) => b.apps - a.apps,
+  mins:    (a, b) => b.mins - a.mins,
+  name:    (a, b) => a.name.localeCompare(b.name),
+};
+const PD = pd.map((p, i) => ({...p, _i:i, potNum:parsePot(p.pot), ratingNum:p.rating != null ? p.rating : -1, apps:p.apps||0, mins:pdMins(p)}));
+function renderPD(){
+  const q = state.q.toLowerCase();
+  let list = PD.filter(p => {
+    if (q && !(p.name.toLowerCase().includes(q) || (p.club||"").toLowerCase().includes(q) || (p.pos||"").toLowerCase().includes(q))) return false;
+    if (state.pos !== "All") {
+      if (POS_MAJORS.includes(state.pos)) { if (p.major !== state.pos) return false; }
+      else if (state.pos === "no data") { if (p.major !== state.posMajor || !isGenericPos(p.pos)) return false; }
+      else { if (p.pos !== state.pos) return false; }
+    }
+    if (state.gs !== "All" && p.gs !== state.gs) return false;
+    return true;
+  });
+  const s = SORTERS[state.sort];
+  list = [...list].sort((a, b) => {
+    if (state.sort === "name") return s(a, b);
+    return s(a, b) * state.dir;
+  });
+  document.getElementById("pdGrid").innerHTML = list.map(pdCardHTML).join("");
+  document.getElementById("pdCount").innerHTML = `<b>${list.length}</b> / ${pd.length} players`;
+  document.querySelectorAll(".pd-card").forEach(c =>
+    c.addEventListener("click", () => openPD(c.getAttribute("data-name"))));
+  updatePosCounts();
+}
+// toolbar bindings
+document.getElementById("pdSearch").addEventListener("input", e => { state.q = e.target.value.trim(); renderPD(); });
+document.getElementById("pdSort").addEventListener("change", e => { state.sort = e.target.value; renderPD(); });
+document.getElementById("pdDir").addEventListener("click", () => {
+  state.dir *= -1;
+  document.getElementById("pdDir").textContent = state.dir === 1 ? "↓" : "↑";
+  renderPD();
+});
+document.getElementById("pdGs").addEventListener("change", e => { state.gs = e.target.value; renderPD(); });
+
+// ---- position dropdown (grouped: major -> fine positions) ----
+const POS_MAJORS = ["Goalkeeper", "Defender", "Midfielder", "Forward"];
+const GENERIC_POS = ["Defender", "Midfield", "Attack"];
+const isGenericPos = pos => GENERIC_POS.includes(pos);
+const displayPos = p => isGenericPos(p.pos) ? "no data" : (p.pos || p.major || "Unknown");
+const POS_ORDER = ["Goalkeeper",
+  "Centre-Back", "Right-Back", "Left-Back",
+  "Defensive Midfield", "Central Midfield", "Attacking Midfield", "Right Midfield", "Left Midfield",
+  "Left Winger", "Right Winger", "Centre-Forward", "Second Striker"];
+const POS_FINE = [];
+{
+  const seen = new Set();
+  for (const p of pd) {
+    if (!p.pos || seen.has(p.pos + "|" + p.major)) continue;
+    seen.add(p.pos + "|" + p.major);
+    POS_FINE.push({major: p.major, name: isGenericPos(p.pos) ? "no data" : p.pos});
+  }
+  POS_FINE.sort((a, b) => {
+    const ia = POS_ORDER.indexOf(a.name), ib = POS_ORDER.indexOf(b.name);
+    return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+  });
+}
+const posGroupsEl = document.getElementById("pdPosGroups");
+function posCount(major, fine){
+  if (fine) return PD.filter(p => p.pos === fine).length;
+  return PD.filter(p => p.major === major).length;
+}
+function updatePosCounts(){
+  document.querySelectorAll(".pos-g").forEach(g => {
+    const c = g.querySelector(".pos-count");
+    if (c) c.textContent = posCount(g.getAttribute("data-major"));
+  });
+  document.querySelectorAll(".pos-items .pos-i").forEach(i => {
+    const c = i.querySelector(".pos-count");
+    const pos = i.getAttribute("data-pos");
+    if (pos === "no data") {
+      const m = i.getAttribute("data-major");
+      if (c) c.textContent = PD.filter(p => p.major === m && isGenericPos(p.pos)).length;
+    } else if (c) c.textContent = posCount(null, pos);
+  });
+}
+function buildPosMenu(){
+  posGroupsEl.innerHTML = POS_MAJORS.map(major => {
+    const items = POS_FINE.filter(d => d.major === major).map(d => d.name);
+    return `<div class="pos-group" data-major="${major}">
+      <button class="pos-g" type="button" data-major="${major}"><span class="arr">▸</span>${major}<span class="pos-count"></span></button>
+      <div class="pos-items">${items.map(nm => `<button class="pos-i" type="button" data-pos="${nm}"${nm === "no data" ? ` data-major="${major}"` : ""}><span>${nm}</span><span class="pos-count"></span></button>`).join("")}</div>
+    </div>`;
+  }).join("");
+  updatePosCounts();
+}
+buildPosMenu();
+function updatePosBtn(){
+  document.getElementById("pdPosBtn").textContent = "Position: " + state.pos + " ▾";
+  posGroupsEl.querySelectorAll(".pos-g").forEach(g => g.classList.toggle("on", g.getAttribute("data-major") === state.pos));
+  posGroupsEl.querySelectorAll(".pos-i").forEach(i => {
+    const pos = i.getAttribute("data-pos");
+    i.classList.toggle("on", pos === state.pos && (pos !== "no data" || i.getAttribute("data-major") === state.posMajor));
+  });
+  document.querySelector('.pos-i.top').classList.toggle("on", state.pos === "All");
+}
+const pdPosBtn = document.getElementById("pdPosBtn");
+const pdPosMenu = document.getElementById("pdPosMenu");
+pdPosBtn.addEventListener("click", e => { e.stopPropagation(); pdPosMenu.classList.toggle("show"); });
+document.addEventListener("click", e => { if (!pdPosMenu.contains(e.target) && e.target !== pdPosBtn) pdPosMenu.classList.remove("show"); });
+posGroupsEl.addEventListener("click", e => {
+  const g = e.target.closest(".pos-g");
+  if (g) {
+    const major = g.getAttribute("data-major");
+    const group = g.parentElement;
+    const wasOpen = group.classList.contains("open");
+    posGroupsEl.querySelectorAll(".pos-group.open").forEach(x => x.classList.remove("open"));
+    if (!wasOpen) { group.classList.add("open"); state.pos = major; }
+    updatePosBtn(); renderPD();
+    return;
+  }
+  const i = e.target.closest(".pos-i");
+  if (i && i !== pdPosMenu.querySelector(".pos-i.top")) {
+    const pos = i.getAttribute("data-pos");
+    state.pos = pos;
+    state.posMajor = pos === "no data" ? i.getAttribute("data-major") : null;
+    pdPosMenu.classList.remove("show");
+    updatePosBtn(); renderPD();
+  }
+});
+document.querySelector('.pos-i.top').addEventListener("click", () => {
+  state.pos = "All";
+  state.posMajor = null;
+  pdPosMenu.classList.remove("show");
+  updatePosBtn(); renderPD();
+});
+</script>
+<script>
+// ================= Player Modal (v2) =================
+function pdStatsHTML(fstats){
+  if (!fstats || !fstats.length) return "";
+  const groups = {};
+  fstats.forEach(s => { (groups[s.group] = groups[s.group] || []).push(s); });
+  const order = ["Shooting", "Passing", "Possession", "Defending", "Discipline", "Goalkeeping", "Distribution"];
+  const keys = Object.keys(groups).sort((a, b) => {
+    const ia = order.indexOf(a), ib = order.indexOf(b);
+    return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+  });
+  return keys.map(g => `<div class="pm-sec"><h4>${g} (FotMob 2026)</h4><div class="pm-rows">
+    ${groups[g].map(s => `<div><b>${s.stat}</b><div class="v">${s.total}${s.per90 != null ? ` <span style="color:#5d6b84">(${s.per90}/90)</span>` : ""}${s.pct != null ? ` <span style="color:#5d6b84">p${s.pct}</span>` : ""}</div></div>`).join("")}
+  </div></div>`).join("");
+}
+function pdAttrsHTML(attrs){
+  if (!attrs) return "";
+  const items = [];
+  const hasCJK = /[\u4e00-\u9fff]/.test(attrs);
+  if (hasCJK) {
+    const re = /([\u4e00-\u9fff]{1,8})([+\-]+)/g;
+    let m;
+    while ((m = re.exec(attrs)) !== null) items.push({w: m[1], sign: m[2]});
+  } else {
+    const segs = attrs.split(/[;；]/);
+    for (const seg of segs) {
+      const toks = seg.trim().split(/\s+/).filter(Boolean);
+      let buf = [];
+      const flush = (sign) => { if (buf.length) { items.push({w: buf.join(" "), sign}); buf = []; } };
+      for (const tok of toks) {
+        if (/^[+\-]+$/.test(tok)) { flush(tok); continue; }
+        const m2 = tok.match(/^(.+?)([+\-]+)$/);
+        if (m2 && (buf.length || m2[1])) { buf.push(m2[1]); flush(m2[2]); continue; }
+        buf.push(tok);
+      }
+      if (buf.length) items.push({w: buf.join(" "), sign: "+"});
+    }
+  }
+  if (!items.length) return `<div class="pm-sec"><h4>Attributes</h4><div class="v">${attrs}</div></div>`;
+  const strengths = [], weaknesses = [];
+  for (const it of items) {
+    const level = it.sign.length;
+    const color = it.sign.includes("+")
+      ? (level >= 2 ? "#1f8a4c" : "#3aa76d")
+      : (level >= 2 ? "#d6453a" : "#e07b74");
+    const chip = `<span class="attr-chip" style="background:${color}">${it.w} ${it.sign}</span>`;
+    (it.sign.includes("-") ? weaknesses : strengths).push(chip);
+  }
+  return `<div class="pm-sec"><h4>Attributes</h4><div class="pm-rows">
+    <div><b>Strengths</b><div class="attr-chips" style="margin-top:4px">${strengths.join("") || "—"}</div></div>
+    <div><b>Weaknesses</b><div class="attr-chips" style="margin-top:4px">${weaknesses.join("") || "—"}</div></div>
+  </div></div>`;
+}
+function openPD(name){
+  const p = pd.find(x => x.name === name);
+  if (!p) return;
+  const hasRt = p.rating != null;
+  const stars = pdStars(p.pot);
+  const ntRec = Object.entries(p.nt || {}).filter(([,v]) => v).map(([k,v]) => `${k}:${v}`).join(", ");
+  const LF = {"CSL":"Chinese Super League","CL1":"China League One","CL2":"China League Two"};
+  const breaks = (p.cur_break || []).filter(b => b.comp !== LF[p.league]);
+  const rtCard = hasRt ? `<div class="pm-rt">
+      <div class="big" style="color:${pdRatingColor(p.rating)}">${p.rating}</div>
+      <div class="sm">2026 CSL avg<br>${p.rating_n} rated apps${p.apps && p.rating_n < p.apps ? " of " + p.apps : ""}${p.rating_team ? "<br>" + p.rating_team : ""}</div>
+    </div>` : "";
+  const bio = [displayPos(p), p.club, p.league, p.birth, p.height].filter(Boolean).join(" · ");
+  // 评估条四格
+  const strip = [["Standing", p.gs, GS_COLOR[p.gs] || "#9aa7bd"],
+                 ["Readiness", p.er, ER_COLOR[p.er] || "#9aa7bd"],
+                 ["Potential", p.ep, EP_COLOR[p.ep] || "#9aa7bd"]]
+    .filter(x => x[1])
+    .map(([k, v, c]) => `<div class="pm-cell"><div class="pk">${k}</div><div class="pv" style="color:${c}">${v}</div></div>`)
+    .join("");
+  const potCell = p.pot ? `<div class="pm-cell"><div class="pk">★ Rating</div><div class="pv" style="color:#FFD23F">${stars || p.pot}<small>pot</small></div></div>` : "";
+  document.getElementById("pdModal").innerHTML = `
+    <button class="cls" onclick="closePD()">✕</button>
+    <div class="pm-head">
+      ${pdPhoto(p, 76, "pm-ph")}
+      <div class="pm-id">
+        <div class="pm-name">${p.name}${stars ? ` <span class="stars">${stars}</span>` : ""}</div>
+        <div class="pm-meta">${bio}${p.nt_highest ? `<span class="nt-badge">${p.nt_highest}</span>` : ""}</div>
+      </div>
+      ${rtCard}
+    </div>
+    ${(strip || potCell) ? `<div class="pm-strip">${strip}${potCell}</div>` : ""}
+    ${pdAttrsHTML(p.attrs)}
+    ${p.overview ? `<div class="pm-sec"><h4>Scouting Overview</h4><div style="font-size:13px;line-height:1.8;color:var(--tx2)">${p.overview}</div></div>` : ""}
+    <div class="pm-grid2">
+      <div class="pm-sec"><h4>Current Season (2026)</h4><div class="pm-rows">
+        <div><b>League</b><div class="v">${p.league||"-"}</div></div>
+        <div><b>Club</b><div class="v">${p.club||"-"}</div></div>
+        <div><b>Appearances</b><div class="v">${p.apps||0}</div></div>
+        <div><b>Position</b><div class="v">${displayPos(p)}</div></div>
+        ${breaks.map(b => `<div><b>${b.comp.replace("Chinese Super League","CSL").replace("China League One","CL1").replace("China League Two","CL2")}</b><div class="v">${b.apps} apps${b.goals ? " · " + b.goals + " g" : ""}${b.assists ? " · " + b.assists + " a" : ""}${b.min ? " · " + b.min + "'" : ""}</div></div>`).join("")}
+      </div></div>
+      <div class="pm-sec"><h4>Career (minutes)</h4><div class="pm-rows">
+        <div><b>CSL</b><div class="v">${(p.cs_mins||0).toLocaleString()}</div></div>
+        <div><b>CL1</b><div class="v">${(p.c1_mins||0).toLocaleString()}</div></div>
+        <div><b>Total</b><div class="v">${((p.cs_mins||0)+(p.c1_mins||0)).toLocaleString()}</div></div>
+      </div>
+      ${p.nt_highest ? `<h4 style="margin-top:14px">National Team</h4><div class="pm-rows">
+        <div><b>Highest level</b><div class="v">${p.nt_highest} ✅</div></div>
+        <div><b>Record</b><div class="v">${ntRec||"none"}</div></div>
+      </div>` : ""}</div>
+    </div>
+    ${pdStatsHTML(p.fstats)}
+    <div class="pm-foot">Data updated: ${DATA.generated} · Sources: Transfermarkt · FotMob · manual assessment</div>`;
+  document.getElementById("pdOverlay").classList.add("show");
+}
+function closePD(){ document.getElementById("pdOverlay").classList.remove("show"); }
+document.getElementById("pdOverlay").addEventListener("click", e => { if (e.target.id === "pdOverlay") closePD(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closePD(); });
+renderPD();
+if (charts["chartRating"]) charts["chartRating"].on("click", p => { if (p && p.data && p.data.name) openPD(p.data.name); });
+if (charts["chartScatter"]) charts["chartScatter"].on("click", p => { if (p && p.data && p.data.name) openPD(p.data.name); });
+</script>
+</body>
+</html>
