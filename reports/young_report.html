@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>China's 2011 &amp; Younger Age Groups · Player Profiles</title>
+<style>
+
+:root{
+  --bg:#060b16; --bg2:#0a1226; --panel:rgba(255,255,255,.04); --line:rgba(255,255,255,.09);
+  --tx:#eef2f8; --tx2:#9aa7bd; --tx3:#5d6b84;
+  --blue:#0D99FF; --green:#00C853; --gold:#FFD23F; --purple:#7B61FF; --red:#FF6B4A;
+  --mono:"Segoe UI", "Microsoft YaHei", sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0; background:var(--bg); color:var(--tx); font-family:var(--mono); line-height:1.55; -webkit-font-smoothing:antialiased}
+.bg-glow{position:fixed; inset:0; z-index:-1; pointer-events:none; background:
+  radial-gradient(900px 420px at 85% -10%, rgba(13,153,255,.14), transparent 60%),
+  radial-gradient(700px 380px at -10% 30%, rgba(123,97,255,.10), transparent 60%),
+  radial-gradient(800px 500px at 55% 110%, rgba(0,200,83,.07), transparent 60%),
+  var(--bg);}
+
+/* ---------- hero ---------- */
+.hero{padding:64px 32px 36px; position:relative; overflow:hidden}
+.hero::after{content:""; position:absolute; inset:auto 0 0 0; height:1px; background:linear-gradient(90deg,transparent,rgba(13,153,255,.5),transparent)}
+.hero-inner{max-width:1180px; margin:0 auto}
+.tag{display:inline-flex; align-items:center; gap:8px; font-size:11px; letter-spacing:2.5px; text-transform:uppercase;
+  color:var(--blue); border:1px solid rgba(13,153,255,.35); background:rgba(13,153,255,.08);
+  padding:5px 14px; border-radius:30px; font-weight:600}
+.tag .dot{width:6px; height:6px; border-radius:50%; background:var(--green); box-shadow:0 0 8px var(--green)}
+h1{font-size:clamp(34px,5.2vw,58px); margin:22px 0 8px; font-weight:800; letter-spacing:-.5px; line-height:1.08}
+h1 .grad{background:linear-gradient(92deg,#0D99FF 10%,#7B61FF 55%,#FFD23F 100%); -webkit-background-clip:text; background-clip:text; color:transparent}
+.hero-sub{color:var(--tx2); font-size:15px; max-width:760px; margin:6px 0 30px}
+.hero-sub b{color:var(--tx)}
+.kpi-strip{display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:14px; margin-top:8px}
+.kpi{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:18px 20px; backdrop-filter:blur(8px);
+  transition:transform .18s, border-color .18s}
+.kpi:hover{transform:translateY(-3px); border-color:rgba(13,153,255,.45)}
+.kpi .num{font-size:40px; font-weight:800; letter-spacing:-1px; line-height:1}
+.kpi .lab{font-size:11.5px; color:var(--tx2); margin-top:8px; letter-spacing:.6px; text-transform:uppercase}
+.kpi.blue .num{color:var(--blue)} .kpi.green .num{color:var(--green)}
+.kpi.gold .num{color:var(--gold)} .kpi.purple .num{color:var(--purple)}
+.hero-mini{display:flex; flex-wrap:wrap; gap:8px 22px; margin-top:18px; font-size:12.5px; color:var(--tx3)}
+.hero-mini b{color:var(--tx2); font-weight:600}
+
+/* ---------- sticky nav ---------- */
+nav{position:sticky; top:0; z-index:50; background:rgba(6,11,22,.82); backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1180px; margin:0 auto; display:flex; gap:4px; overflow-x:auto; padding:10px 20px; scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+nav a{color:var(--tx2); text-decoration:none; font-size:12.5px; padding:7px 13px; border-radius:20px; white-space:nowrap; transition:.15s}
+nav a:hover{color:var(--tx); background:rgba(255,255,255,.07)}
+nav a:first-child{color:var(--blue); font-weight:700}
+
+/* ---------- sections ---------- */
+main{max-width:1180px; margin:0 auto; padding:34px 20px 80px}
+.sec-title{display:flex; align-items:center; gap:12px; margin:44px 0 18px}
+.sec-title .no{font-size:12px; color:var(--blue); border:1px solid rgba(13,153,255,.4); border-radius:8px; padding:3px 9px; font-weight:700}
+.sec-title h2{margin:0; font-size:22px; font-weight:750; letter-spacing:.3px}
+.sec-title .line{flex:1; height:1px; background:linear-gradient(90deg,var(--line),transparent)}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px}
+@media (max-width:900px){ .grid2{grid-template-columns:1fr} }
+
+.card{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:18px 20px 14px;
+  transition:border-color .18s, transform .18s; scroll-margin-top:70px}
+.card:hover{border-color:rgba(255,255,255,.16)}
+.cbar{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px}
+.ct{display:flex; align-items:center; gap:9px; font-size:14px; font-weight:650; letter-spacing:.2px}
+.ct .ci{width:8px; height:8px; border-radius:3px; background:linear-gradient(135deg,var(--blue),var(--purple)); box-shadow:0 0 10px rgba(13,153,255,.5)}
+.ct .sub{font-size:11px; color:var(--tx3); font-weight:400}
+.btn{background:rgba(13,153,255,.14); color:var(--blue); border:1px solid rgba(13,153,255,.35); border-radius:8px;
+  padding:4px 12px; font-size:11.5px; cursor:pointer; transition:.15s; font-family:var(--mono)}
+.btn:hover{background:rgba(13,153,255,.26)}
+.chart{width:100%; height:340px}
+
+/* FM rank grid */
+.fm-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(330px,1fr)); gap:16px}
+
+/* ---------- impact table ---------- */
+.tbl-wrap{overflow-x:auto; border-radius:14px; border:1px solid var(--line)}
+table.tbl{width:100%; border-collapse:collapse; font-size:13px}
+.tbl th{background:rgba(255,255,255,.05); color:var(--tx2); font-weight:600; font-size:11.5px; text-transform:uppercase;
+  letter-spacing:.8px; padding:11px 14px; text-align:left; border-bottom:1px solid var(--line); white-space:nowrap}
+.tbl td{padding:10px 14px; border-bottom:1px solid rgba(255,255,255,.05); color:var(--tx2)}
+.tbl tr:hover td{background:rgba(13,153,255,.06); color:var(--tx)}
+.tbl tr.top3 td{background:rgba(255,210,63,.06)}
+.tbl tr.top3 td:first-child{color:var(--gold); font-weight:800}
+.tbl .num{text-align:right; font-variant-numeric:tabular-nums}
+.tbl .num b{color:var(--tx)}
+
+/* ---------- profiles ---------- */
+.prof-toolbar{position:sticky; top:58px; z-index:40; display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+  background:rgba(6,11,22,.85); backdrop-filter:blur(12px); border:1px solid var(--line); border-radius:16px;
+  padding:14px 16px; margin:10px 0 18px}
+.prof-toolbar input[type=text]{flex:1 1 200px; min-width:150px; background:rgba(255,255,255,.05); border:1px solid var(--line);
+  color:var(--tx); border-radius:10px; padding:9px 14px; font-size:13px; outline:none; font-family:var(--mono)}
+.prof-toolbar input[type=text]:focus{border-color:var(--blue)}
+.prof-toolbar select{background:rgba(255,255,255,.05); border:1px solid var(--line); color:var(--tx); border-radius:10px;
+  padding:9px 10px; font-size:12.5px; outline:none; cursor:pointer; font-family:var(--mono)}
+.prof-toolbar select option{background:#0a1226; color:var(--tx)}
+.dir-btn{width:38px; height:37px; border-radius:10px; border:1px solid var(--line); background:rgba(255,255,255,.05);
+  color:var(--tx2); cursor:pointer; font-size:15px; transition:.15s}
+.dir-btn:hover{border-color:var(--blue); color:var(--blue)}
+.chips{display:flex; gap:6px; flex-wrap:wrap}
+.chip{padding:6px 13px; border-radius:20px; font-size:12px; border:1px solid var(--line); color:var(--tx2);
+  background:transparent; cursor:pointer; transition:.15s; font-family:var(--mono)}
+.chip:hover{color:var(--tx); border-color:rgba(255,255,255,.25)}
+.chip.on{background:rgba(13,153,255,.18); border-color:var(--blue); color:var(--blue); font-weight:650}
+/* position dropdown */
+.pos-dd{position:relative}
+.pos-btn{background:rgba(255,255,255,.05); border:1px solid var(--line); color:var(--tx); border-radius:10px;
+  padding:9px 14px; font-size:12.5px; cursor:pointer; font-family:var(--mono); white-space:nowrap; transition:border-color .15s}
+.pos-btn:hover{border-color:var(--blue)}
+.pos-menu{position:absolute; top:calc(100% + 6px); left:0; z-index:60; min-width:240px; background:#0c1428;
+  border:1px solid var(--line); border-radius:12px; padding:6px; box-shadow:0 18px 50px rgba(0,0,0,.5);
+  display:none; max-height:400px; overflow:auto; scrollbar-width:thin; scrollbar-color:#33405c transparent}
+.pos-menu.show{display:block}
+.pos-i{display:block; width:100%; text-align:left; background:none; border:none; color:var(--tx3); font-size:12px;
+  padding:6px 12px; cursor:pointer; border-radius:7px; font-family:var(--mono); transition:.12s}
+.pos-i:hover{background:rgba(13,153,255,.12); color:var(--tx)}
+.pos-i.on{color:var(--blue); font-weight:650}
+.pos-i.top{color:var(--tx2); border-bottom:1px solid var(--line); border-radius:0; margin-bottom:4px; padding:7px 10px}
+.pos-i.top.on{color:var(--blue)}
+.pos-g{display:flex; width:100%; align-items:center; gap:8px; background:none; border:none; color:var(--tx2);
+  font-size:12.5px; padding:8px 10px; cursor:pointer; border-radius:8px; text-align:left; font-family:var(--mono); transition:.12s}
+.pos-g:hover{background:rgba(255,255,255,.06); color:var(--tx)}
+.pos-g .arr{color:var(--tx3); font-size:10px; width:12px; transition:transform .15s; flex-shrink:0}
+.pos-g.on{color:var(--blue); font-weight:650}
+.pos-group.open .pos-g .arr{transform:rotate(90deg)}
+.pos-items{display:none; padding-left:10px}
+.pos-group.open .pos-items{display:block}
+.pos-count{font-size:10.5px; color:var(--tx3); margin-left:auto}
+.pos-items .pos-i{display:flex; justify-content:space-between}
+.pd-count{font-size:12px; color:var(--tx3); margin-left:auto; white-space:nowrap}
+.pd-count b{color:var(--blue)}
+
+.pd-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(225px,1fr)); gap:14px}
+.pd-card{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:14px 15px 12px; cursor:pointer;
+  position:relative; transition:transform .16s, border-color .16s, box-shadow .16s; overflow:hidden}
+.pd-card::before{content:""; position:absolute; inset:0 0 auto 0; height:2px; background:linear-gradient(90deg,var(--blue),var(--purple));
+  opacity:0; transition:opacity .16s}
+.pd-card:hover{transform:translateY(-3px); border-color:rgba(13,153,255,.5); box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.pd-card:hover::before{opacity:1}
+.pd-top{display:flex; align-items:center; gap:10px}
+.pd-ph{width:42px; height:42px; border-radius:50%; overflow:hidden; flex-shrink:0; background:linear-gradient(135deg,#1c2a44,#24385e);
+  display:flex; align-items:center; justify-content:center; font-weight:700; font-size:17px; color:#7fa8d9}
+.pd-ph img{width:100%; height:100%; object-fit:cover}
+.pd-nm{flex:1; min-width:0}
+.pd-nm .nm{font-size:14px; font-weight:700; color:var(--tx); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.pd-nm .meta{font-size:11.5px; color:var(--tx3); margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.pd-pot{font-size:12.5px; color:var(--gold); font-weight:700; flex-shrink:0}
+.pd-row{display:flex; align-items:baseline; gap:10px; margin-top:10px; padding-top:9px; border-top:1px dashed rgba(255,255,255,.08);
+  font-size:12px; color:var(--tx2); font-variant-numeric:tabular-nums}
+.pd-row .stat{font-weight:700; font-size:13.5px; color:var(--tx)}
+.pd-row .stat.g{color:var(--green)} .pd-row .stat.b{color:var(--blue)} .pd-row .stat.r{color:var(--red)}
+/* 评估行：色点 + 短词（取代胶囊标签） */
+.pd-eval{display:flex; align-items:center; flex-wrap:wrap; gap:7px 10px; margin-top:9px; min-height:15px}
+.pd-eval .ev{display:inline-flex; align-items:center; gap:5px; font-size:10.5px; font-weight:650; color:var(--tx2); letter-spacing:.2px}
+.pd-eval .dot{width:7px; height:7px; border-radius:50%; display:inline-block; flex-shrink:0}
+.pd-eval .note{color:var(--blue); font-size:12px; cursor:default}
+
+/* ---------- modal ---------- */
+.pd-overlay{position:fixed; inset:0; background:rgba(3,6,14,.7); backdrop-filter:blur(6px); display:none;
+  align-items:flex-start; justify-content:center; z-index:100; padding:34px 14px; overflow:auto}
+.pd-overlay.show{display:flex}
+.pd-modal{background:linear-gradient(180deg,#0c1428,#0a1122); border:1px solid var(--line); border-radius:18px;
+  max-width:780px; width:100%; padding:26px 28px; box-shadow:0 24px 70px rgba(0,0,0,.5); position:relative; animation:pop .18s ease}
+@keyframes pop{from{opacity:0; transform:translateY(12px) scale(.985)} to{opacity:1; transform:none}}
+.pd-modal .cls{position:absolute; top:14px; right:16px; border:1px solid var(--line); background:rgba(255,255,255,.06);
+  border-radius:50%; width:32px; height:32px; font-size:14px; cursor:pointer; color:var(--tx2); transition:.15s}
+.pd-modal .cls:hover{color:var(--tx); background:rgba(255,255,255,.14)}
+.pm-head{display:flex; gap:16px; align-items:flex-start; padding-right:36px}
+.pm-ph{width:76px; height:76px; border-radius:18px; overflow:hidden; flex-shrink:0; background:linear-gradient(135deg,#1c2a44,#24385e);
+  display:flex; align-items:center; justify-content:center; font-size:30px; font-weight:800; color:#7fa8d9}
+.pm-ph img{width:100%; height:100%; object-fit:cover}
+.pm-id{flex:1; min-width:0}
+.pm-name{font-size:23px; font-weight:800; letter-spacing:-.3px; margin:0}
+.pm-name .stars{color:var(--gold); font-size:15px; letter-spacing:2px; vertical-align:2px}
+.pm-meta{font-size:12.5px; color:var(--tx2); margin-top:4px; display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+.nt-badge{font-size:10px; font-weight:700; letter-spacing:.5px; padding:2px 9px; border-radius:12px;
+  background:rgba(0,200,83,.13); color:#4ade80; border:1px solid rgba(0,200,83,.35)}
+/* 评估条：替代头部胶囊标签，结构化四格仪表盘 */
+.pm-strip{display:grid; grid-template-columns:repeat(auto-fit,minmax(118px,1fr)); gap:10px; margin-top:14px}
+.pm-cell{background:rgba(255,255,255,.035); border:1px solid var(--line); border-radius:12px; padding:10px 13px 11px;
+  transition:border-color .15s}
+.pm-cell:hover{border-color:rgba(255,255,255,.22)}
+.pm-cell .pk{font-size:9.5px; letter-spacing:1.3px; text-transform:uppercase; color:var(--tx3); font-weight:650}
+.pm-cell .pv{font-size:15.5px; font-weight:750; margin-top:5px; line-height:1.15}
+.pm-cell .pv small{font-size:10px; font-weight:600; opacity:.75; margin-left:4px}
+.pm-rt{flex-shrink:0; text-align:center; background:rgba(255,255,255,.045); border:1px solid var(--line); border-radius:14px;
+  padding:12px 16px 10px; min-width:96px}
+.pm-rt .big{font-size:30px; font-weight:800; line-height:1}
+.pm-rt .sm{font-size:10.5px; color:var(--tx3); margin-top:5px; line-height:1.4}
+.pm-sec{background:rgba(255,255,255,.035); border:1px solid var(--line); border-radius:13px; padding:14px 16px; margin-top:14px}
+.pm-sec h4{margin:0 0 9px; font-size:12px; color:var(--blue); letter-spacing:1.4px; text-transform:uppercase; font-weight:700}
+.pm-grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+@media (max-width:640px){ .pm-grid2{grid-template-columns:1fr} }
+.pm-rows{display:grid; grid-template-columns:1fr 1fr; gap:6px 18px; font-size:13px; line-height:1.85}
+.pm-rows b{color:var(--tx); font-weight:600}
+.pm-rows .v{color:var(--tx2)}
+.pm-assess{display:grid; grid-template-columns:1fr 1fr; gap:9px}
+.pm-assess .cell{background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:10px; padding:10px 13px}
+.pm-assess .k{font-size:10.5px; color:var(--tx3); letter-spacing:1px; text-transform:uppercase}
+.pm-assess .v2{font-size:15px; font-weight:700; margin-top:3px}
+.pm-foot{font-size:11px; color:var(--tx3); margin-top:16px; padding-top:12px; border-top:1px solid var(--line)}
+.attr-chips{display:flex; flex-wrap:wrap; gap:6px}
+.attr-chip{display:inline-block; font-size:12px; color:#fff; padding:3px 11px; border-radius:12px; font-weight:600}
+.imp-wrap{max-height:430px; overflow-y:auto; margin:6px 2px 2px; scrollbar-width:thin; scrollbar-color:#33405c transparent}
+footer{max-width:1180px; margin:0 auto; padding:26px 20px 60px; color:var(--tx3); font-size:12px;
+  border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:8px 24px; justify-content:space-between}
+footer a{color:var(--blue); text-decoration:none}
+
+
+/* ===== 2011+ 页扩展（用户要求：按年段分区 / 关注栏 / 整体更大） ===== */
+.sec-title{margin:52px 0 14px}
+.sec-title h2{font-size:27px}
+.sec-title .no{font-size:13px; padding:4px 11px}
+.sec-count{font-size:12.5px; color:var(--tx3); white-space:nowrap}
+.hl-band{margin:0 0 22px; padding:18px 20px 20px; border-radius:18px;
+  border:1px solid rgba(255,210,63,.24);
+  background:linear-gradient(180deg, rgba(255,210,63,.075), rgba(255,255,255,.018))}
+.hl-cap{display:flex; align-items:center; gap:9px; font-size:11.5px; letter-spacing:2.2px;
+  text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:15px}
+.hl-cap .dot{background:var(--gold); box-shadow:0 0 8px var(--gold)}
+.hl-hint{margin-left:auto; font-size:11px; letter-spacing:.8px; color:var(--tx3);
+  text-transform:none; font-weight:600; white-space:nowrap}
+.hl-nav{display:flex; gap:6px; margin-left:10px}
+.hl-nav .dir-btn{padding:4px 10px; font-size:13px; line-height:1}
+/* 横短竖长：一行排列、可左右滑动 */
+.hl-row{display:flex; gap:16px; overflow-x:auto; padding:2px 2px 10px;
+  scroll-snap-type:x proximity; scroll-behavior:smooth; -webkit-overflow-scrolling:touch}
+.hl-row::-webkit-scrollbar{height:8px}
+.hl-row::-webkit-scrollbar-thumb{background:rgba(255,210,63,.35); border-radius:8px}
+.hl-row::-webkit-scrollbar-track{background:rgba(255,255,255,.05); border-radius:8px}
+.hl-card{flex:0 0 262px; width:262px; scroll-snap-align:start; display:flex;
+  flex-direction:column; background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,210,63,.18); border-radius:16px;
+  padding:22px 20px 18px; cursor:pointer;
+  transition:transform .16s, border-color .16s, box-shadow .16s}
+.hl-card:hover{transform:translateY(-4px); border-color:rgba(255,210,63,.55);
+  box-shadow:0 16px 40px rgba(0,0,0,.42)}
+.hl-ph{width:132px; height:132px; border-radius:32px; overflow:hidden; flex-shrink:0;
+  margin:0 auto 16px; background:linear-gradient(135deg,#2a2036,#3a2f4a);
+  display:flex; align-items:center; justify-content:center;
+  font-size:52px; font-weight:800; color:var(--gold)}
+/* 皮肤只给了 .pd-ph img / .pm-ph img 尺寸规则，自定义的 .hl-ph 必须自己补：
+   否则 img 按原始尺寸溢出，overflow:hidden 只露左上角（脸被裁偏、露出部分显得又小又歪） */
+.hl-ph img{width:100%; height:100%; object-fit:cover; display:block}
+.hl-nm{text-align:center}
+.hl-nm .nm{font-size:19px; font-weight:800; color:var(--tx); white-space:nowrap;
+  overflow:hidden; text-overflow:ellipsis}
+.hl-nm .cn{font-size:13px; color:var(--gold); margin-top:3px}
+.hl-nm .meta{font-size:12.5px; color:var(--tx2); margin-top:6px; line-height:1.5}
+.hl-badge{font-size:11.5px; font-weight:700; color:#06240f; background:var(--gold);
+  border-radius:20px; padding:3px 11px; margin:12px auto 0}
+.hl-note{font-size:12.5px; color:var(--tx2); line-height:1.65; margin-top:14px;
+  padding-top:12px; border-top:1px dashed rgba(255,255,255,.09);
+  display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden}
+.hl-tags{display:flex; flex-wrap:wrap; gap:7px 10px; margin-top:auto; padding-top:13px}
+/* 下方球员卡整体放大 */
+.pd-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:18px}
+.pd-card{padding:18px 19px 16px; border-radius:16px}
+.pd-nm .nm{font-size:16.5px}
+.pd-nm .meta{font-size:12.5px}
+.pd-ph{font-size:22px}
+.pd-pot{font-size:14px}
+.pd-row{font-size:13px; margin-top:13px; padding-top:11px}
+.pd-row .stat{font-size:16px}
+.pd-eval{gap:8px 12px; margin-top:11px; min-height:17px}
+.pd-eval .ev{font-size:11.5px}
+.pd-card .ev.watch{color:var(--gold)}
+.pd-card .ev.watch .dot{background:var(--gold); box-shadow:0 0 8px var(--gold)}
+@media (max-width:640px){ .hl-card{flex:0 0 232px; width:232px} }
+
+</style>
+</head>
+<body>
+<div class="bg-glow"></div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="tag"><span class="dot"></span>2011 &amp; Younger · Data 2026-09-18</div>
+    <h1>China's <span class="grad">2011 &amp; Younger</span> Age Groups</h1>
+    <p class="hero-sub"><b>60 players</b> · 32 born 2011 · 22 born 2012 · 6 born 2013 · from a database of 287 tracked names</p>
+  </div>
+</header>
+
+<nav><div class="nav-inner">
+  <a href="#y2011">2011</a>
+  <a href="#y2012">2012</a>
+  <a href="#y2013">2013</a>
+</div></nav>
+
+<main id="top">
+  <div class="prof-toolbar">
+    <input type="text" id="pdSearch" placeholder="Search name / club / position / country…">
+    <select id="pdSort">
+      <option value="default">Default order</option>
+      <option value="name">Name (A–Z)</option>
+      <option value="club">Club (A–Z)</option>
+    </select>
+    <button class="dir-btn" id="pdDir" title="Direction">↓</button>
+    <div class="pos-dd">
+      <button class="pos-btn" id="pdPosBtn" type="button">Position: All ▾</button>
+      <div class="pos-menu" id="pdPosMenu">
+        <button class="pos-i top" type="button" data-pos="All">All Positions</button>
+        <div id="pdPosGroups"></div>
+      </div>
+    </div>
+    <span class="pd-count" id="pdCount"></span>
+  </div>
+
+  <section class="yr" id="y2011">
+    <div class="sec-title"><span class="no">01</span><h2>2011</h2><span class="line"></span><span class="sec-count" id="secCount-2011"></span></div>
+    <div class="hl-band" id="hlBand-2011">
+      <div class="hl-cap"><span class="dot"></span>Maybe worth watching<span class="hl-hint" id="hlHint-2011"></span><span class="hl-nav" data-yr="2011"><button class="dir-btn" type="button" data-scroll="-1" data-yr="2011">◀</button><button class="dir-btn" type="button" data-scroll="1" data-yr="2011">▶</button></span></div>
+      <div class="hl-row" id="hlRow-2011"></div>
+    </div>
+    <div class="pd-grid" id="pdGrid-2011"></div>
+  </section>
+
+  <section class="yr" id="y2012">
+    <div class="sec-title"><span class="no">02</span><h2>2012</h2><span class="line"></span><span class="sec-count" id="secCount-2012"></span></div>
+    <div class="hl-band" id="hlBand-2012">
+      <div class="hl-cap"><span class="dot"></span>Maybe worth watching<span class="hl-hint" id="hlHint-2012"></span><span class="hl-nav" data-yr="2012"><button class="dir-btn" type="button" data-scroll="-1" data-yr="2012">◀</button><button class="dir-btn" type="button" data-scroll="1" data-yr="2012">▶</button></span></div>
+      <div class="hl-row" id="hlRow-2012"></div>
+    </div>
+    <div class="pd-grid" id="pdGrid-2012"></div>
+  </section>
+
+  <section class="yr" id="y2013">
+    <div class="sec-title"><span class="no">03</span><h2>2013</h2><span class="line"></span><span class="sec-count" id="secCount-2013"></span></div>
+    <div class="hl-band" id="hlBand-2013">
+      <div class="hl-cap"><span class="dot"></span>Maybe worth watching<span class="hl-hint" id="hlHint-2013"></span><span class="hl-nav" data-yr="2013"><button class="dir-btn" type="button" data-scroll="-1" data-yr="2013">◀</button><button class="dir-btn" type="button" data-scroll="1" data-yr="2013">▶</button></span></div>
+      <div class="hl-row" id="hlRow-2013"></div>
+    </div>
+    <div class="pd-grid" id="pdGrid-2013"></div>
+  </section>
+
+</main>
+
+<footer>
+  <span><a href="#top">Back to top ↑</a></span>
+</footer>
+
+<div class="pd-overlay" id="pdOverlay"><div class="pd-modal" id="pdModal"></div></div>
+
+<script>const DATA = {"generated": "2026-09-18", "years": [{"year": 2011}, {"year": 2012}, {"year": 2013}], "players": [{"name": "Li Haoyan", "en": "Li Haoyan", "cn": "李昊炎", "alias": "", "year": 2012, "age_label": "U14", "pos": "Left Winger", "major": "Forward", "club": "Barcelona (La Masia)", "country": "Spain", "note": "The first Chinese player registered at La Masia in its 46-year history. At DAMM in 2025/26 he made 28 appearances, all of them starts, scoring 12 in the Catalan U14 honour league; signed for Barcelona in June 2026. Needs no introduction: the best-known name in China’s 2012 group.", "tags": ["First Chinese at La Masia"], "watch": true, "photo": "../images/players_2011plus/Li_Haoyan.png"}, {"name": "Yao Yiyang", "en": "Yao Yiyang", "cn": "姚奕仰", "alias": "", "year": 2011, "age_label": "U15", "pos": "Left Winger", "major": "Forward", "club": "Cornellà", "country": "Spain", "note": "26 goals in the Catalan U15 second tier for Cornellà, second in the scoring charts, after taking the U14 golden boot with 29 in 29. Moves up to the U16 honour league for 2026-27.", "tags": ["26 goals", "U14 golden boot"], "watch": true, "photo": "../images/players_2011plus/Yao_Yiyang.png"}, {"name": "Cai Yunyi", "en": "Cai Yunyi", "cn": "蔡昀翼", "alias": "", "year": 2011, "age_label": "U15", "pos": "Central Midfield", "major": "Midfielder", "club": "Genoa", "country": "Italy", "note": "In the Genoa academy since 2022 and a regular in Italy's U15 league last season: 12 games, seven of them starts. Born in Italy to parents from Zhejiang.", "tags": ["Italy U15 league"], "watch": false, "photo": ""}, {"name": "Wen Jingyao", "en": "Wen Jingyao", "cn": "文靖尧", "alias": "", "year": 2011, "age_label": "U15", "pos": "Central Midfield", "major": "Midfielder", "club": "Nueva Boadilla", "country": "Spain", "note": "Playing a year up in Madrid's top U16 division: 26 squad appearances and eight starts for Nueva Boadilla's A side, and registered for their U19s in the sixth tier. Came through Beijing Guoan's academy and RDFZ before moving to Spain.", "tags": ["Playing up an age", "Madrid U16 top flight"], "watch": false, "photo": ""}, {"name": "Zhang Yutian", "en": "Zhang Yutian", "cn": "张与田", "alias": "", "year": 2011, "age_label": "U15", "pos": "Left-Back", "major": "Defender", "club": "Ospitalet", "country": "Spain", "note": "A left-back, not a midfielder as some lists have him: 18 starts in 28 games as Ospitalet won the Catalan U15 second tier, losing twice all season. Moves to Cornellà's U16s in the honour league for 2026-27.", "tags": ["League winner"], "watch": false, "photo": ""}, {"name": "Sha Ming", "en": "Sha Ming", "cn": "沙明", "alias": "", "year": 2011, "age_label": "U15", "pos": "Centre-Forward", "major": "Forward", "club": "Shimizu S-Pulse", "country": "Japan", "note": "Physically imposing and technically excellent, able both to beat his man and to finish. Already playing up with Shimizu S-Pulse’s U18s, and the outstanding talent in China’s 2011 group.", "tags": [], "watch": true, "photo": "../images/players_2011plus/Sha_Ming.png"}, {"name": "Song Hongyu", "en": "Song Hongyu", "cn": "宋泓谕", "alias": "", "year": 2011, "age_label": "U15", "pos": "Attacking Midfield", "major": "Midfielder", "club": "RIPACE Osaka", "country": "Japan", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Zeng Chen", "en": "Zeng Chen", "cn": "曾晨", "alias": "", "year": 2011, "age_label": "U15", "pos": "Central Midfield", "major": "Midfielder", "club": "Chiba WINGS", "country": "Japan", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Li Zining", "en": "Li Zining", "cn": "李梓宁", "alias": "", "year": 2011, "age_label": "U15", "pos": "Central Midfield", "major": "Midfielder", "club": "Badalona U15B", "country": "Spain", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Zhu Yanxuan", "en": "Zhu Yanxuan", "cn": "朱彦萱", "alias": "", "year": 2011, "age_label": "U15", "pos": "", "major": "Midfielder", "club": "San Francisco", "country": "Spain", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Liu Yingcan", "en": "Liu Yingcan", "cn": "刘英灿", "alias": "", "year": 2012, "age_label": "U14", "pos": "Right Winger", "major": "Forward", "club": "Valderas", "country": "Spain", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Zou Debin", "en": "Zou Debin", "cn": "邹德滨", "alias": "", "year": 2012, "age_label": "U14", "pos": "Attacking Midfield", "major": "Midfielder", "club": "Fundación Majadahonda", "country": "Spain", "note": "19 starts in 20 games and 22 goals for Boadilla EFMO’s U14s in Madrid’s second-tier honour league, taking the golden boot and the title. A move to Getafe fell through over a registration issue, and he is now in the Majadahonda foundation’s youth side.", "tags": ["22-goal golden boot"], "watch": true, "photo": ""}, {"name": "Zhang Jiahao", "en": "Zhang Jiahao", "cn": "张家浩", "alias": "", "year": 2012, "age_label": "U14", "pos": "Attacking Midfield", "major": "Midfielder", "club": "DAMM", "country": "Spain", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Lu Zimo", "en": "Lu Zimo", "cn": "鲁子墨", "alias": "", "year": 2012, "age_label": "U14", "pos": "Left Winger", "major": "Forward", "club": "Sant Cugat", "country": "Spain", "note": "19 goals in 30 games for Cornellà's U13s in the Catalan second tier, then 23 starts and five goals for Sant Cugat's U14s in the honour league; registered with Cornellà's U15s for 2026-27.", "tags": ["19 goals"], "watch": false, "photo": ""}, {"name": "Xin Xuanjun", "en": "Xin Xuanjun", "cn": "辛炫骏", "alias": "", "year": 2012, "age_label": "U14", "pos": "Central Midfield", "major": "Midfielder", "club": "San José International", "country": "Spain", "note": "48 league appearances and 15 goals across Spanish youth levels last season, 43 of them starts.", "tags": ["48 games", "League winner"], "watch": false, "photo": ""}, {"name": "Luka", "en": "Luo Ziyu", "cn": "罗子渔", "alias": "Luka", "year": 2012, "age_label": "U14", "pos": "Attacking Midfield", "major": "Midfielder", "club": "English school academy", "country": "England", "note": "Invited by Chelsea and Arsenal, but eligibility rules prevent him from joining a professional academy for now.", "tags": [], "watch": true, "photo": "../images/players_2011plus/Luo_Ziyu.png"}, {"name": "Jin Xiangyu", "en": "Jin Xiangyu", "cn": "金相宇", "alias": "", "year": 2012, "age_label": "U14", "pos": "Attacking Midfield", "major": "Midfielder", "club": "Cheonan FMC", "country": "South Korea", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Qu Haoming", "en": "Qu Haoming", "cn": "曲浩铭", "alias": "", "year": 2013, "age_label": "U13", "pos": "Centre-Back", "major": "Defender", "club": "Ospitalet", "country": "Spain", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Wang Ziyu", "en": "Wang Ziyu", "cn": "王杍瑜", "alias": "", "year": 2013, "age_label": "U13", "pos": "Attacking Midfield", "major": "Midfielder", "club": "Lavida", "country": "Spain", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Luffy", "en": "Luffy", "cn": "", "alias": "", "year": 2013, "age_label": "U13", "pos": "Central Midfield", "major": "Midfielder", "club": "Casa Pia", "country": "Portugal", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Tang Huajian", "en": "Tang Huajian", "cn": "唐华健", "alias": "", "year": 2011, "age_label": "U15", "pos": "Attacking Midfield", "major": "Midfielder", "club": "Shanghai Yitian", "country": "China", "note": "", "tags": [], "watch": true, "photo": "../images/players_2011plus/Tang_Huajian.png"}, {"name": "Chen Yiyu", "en": "Chen Yiyu", "cn": "陈奕宇", "alias": "", "year": 2011, "age_label": "U15", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "Wuhan Three Towns", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Xu Xinze", "en": "Xu Xinze", "cn": "徐新泽", "alias": "", "year": 2011, "age_label": "U15", "pos": "Centre-Back", "major": "Defender", "club": "Wuhan Three Towns", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Huang Yulong", "en": "Huang Yulong", "cn": "黄昱茏", "alias": "", "year": 2011, "age_label": "U15", "pos": "Centre-Back", "major": "Defender", "club": "Changchun Yatai", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Zhang Haoye", "en": "Zhang Haoye", "cn": "张皓烨", "alias": "", "year": 2011, "age_label": "U15", "pos": "Central Midfield", "major": "Midfielder", "club": "Guangdong Mingtu", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Zhang Chenshuo", "en": "Zhang Chenshuo", "cn": "张宸硕", "alias": "", "year": 2011, "age_label": "U15", "pos": "Right Winger", "major": "Forward", "club": "Evergrande academy", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Lu Tianhuai", "en": "Lu Tianhuai", "cn": "路天怀", "alias": "", "year": 2011, "age_label": "U15", "pos": "Right Winger", "major": "Forward", "club": "Evergrande academy", "country": "China", "note": "A tall attacker whose physical development is worth tracking.", "tags": [], "watch": true, "photo": ""}, {"name": "Bian Weicheng", "en": "Bian Weicheng", "cn": "边韦丞", "alias": "", "year": 2011, "age_label": "U15", "pos": "Central Midfield", "major": "Midfielder", "club": "Shanghai Port", "country": "China", "note": "", "tags": [], "watch": true, "photo": ""}, {"name": "Wang Pengcheng", "en": "Wang Pengcheng", "cn": "王鹏程", "alias": "", "year": 2011, "age_label": "U15", "pos": "Centre-Back", "major": "Defender", "club": "Shanghai Port", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Hou Xiaocheng", "en": "Hou Xiaocheng", "cn": "侯骁程", "alias": "", "year": 2011, "age_label": "U15", "pos": "", "major": "Midfielder", "club": "Shanghai Shenhua", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Yang Hanyue", "en": "Yang Hanyue", "cn": "杨涵粤", "alias": "", "year": 2011, "age_label": "U15", "pos": "Centre-Back", "major": "Defender", "club": "Wuhan Three Towns", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Chen Jianfeng", "en": "Chen Jianfeng", "cn": "陈键峰", "alias": "", "year": 2011, "age_label": "U15", "pos": "Right-Back", "major": "Defender", "club": "Zhejiang FC", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Hua Zixuan", "en": "Hua Zixuan", "cn": "花梓轩", "alias": "", "year": 2011, "age_label": "U15", "pos": "Central Midfield", "major": "Midfielder", "club": "Zhejiang FC", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Guo Rundong", "en": "Guo Rundong", "cn": "郭润东", "alias": "", "year": 2011, "age_label": "U15", "pos": "Central Midfield", "major": "Midfielder", "club": "Zhejiang FC", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Song Yixuan", "en": "Song Yixuan", "cn": "宋依轩", "alias": "", "year": 2011, "age_label": "U15", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "Shandong Taishan academy", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Liu Haowei", "en": "Liu Haowei", "cn": "刘昊玮", "alias": "", "year": 2011, "age_label": "U15", "pos": "Left Winger", "major": "Forward", "club": "Shandong Taishan academy", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Wang Xinpeng", "en": "Wang Xinpeng", "cn": "王鑫鹏", "alias": "", "year": 2011, "age_label": "U15", "pos": "Left-Back", "major": "Defender", "club": "Haimen Codion", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Chen Xuejun", "en": "Chen Xuejun", "cn": "陈学隽", "alias": "", "year": 2011, "age_label": "U15", "pos": "", "major": "Midfielder", "club": "Shanghai Port", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Zhou Mo", "en": "Zhou Mo", "cn": "周墨", "alias": "", "year": 2011, "age_label": "U15", "pos": "Goalkeeper", "major": "Goalkeeper", "club": "Shanghai Port", "country": "China", "note": "Sharp reflexes.", "tags": [], "watch": true, "photo": "../images/players_2011plus/Zhou_Mo.png"}, {"name": "Chen Weijie", "en": "Chen Weijie", "cn": "陈伟杰", "alias": "", "year": 2011, "age_label": "U15", "pos": "Centre-Forward", "major": "Forward", "club": "Shanghai Shenhua", "country": "China", "note": "Tall, strong and explosive, with a refined touch and good dribbling to match. Could make his mark in China’s age-group internationals.", "tags": [], "watch": true, "photo": ""}, {"name": "Yu Huan", "en": "Yu Huan", "cn": "于欢", "alias": "", "year": 2011, "age_label": "U15", "pos": "Centre-Forward", "major": "Forward", "club": "Chongqing Nankai", "country": "China", "note": "A tall centre-forward whose physical development is worth tracking.", "tags": [], "watch": true, "photo": ""}, {"name": "Sun Zhiyi", "en": "Sun Zhiyi", "cn": "孙志懿", "alias": "", "year": 2012, "age_label": "U14", "pos": "Left Winger", "major": "Forward", "club": "Wuhan", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Shi Haoyu", "en": "Shi Haoyu", "cn": "师浩宇", "alias": "", "year": 2012, "age_label": "U14", "pos": "Left Winger", "major": "Forward", "club": "Shanghai Shenhua", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Yang Haochen", "en": "Yang Haochen", "cn": "杨浩辰", "alias": "", "year": 2012, "age_label": "U14", "pos": "Central Midfield", "major": "Midfielder", "club": "Tianjin Jinmen Tiger", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Mao Jinglin", "en": "Mao Jinglin", "cn": "毛景霖", "alias": "", "year": 2012, "age_label": "U14", "pos": "Left Winger", "major": "Forward", "club": "Beijing Bayi Aoxiang", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Song Bing'en", "en": "Song Bing'en", "cn": "宋秉恩", "alias": "", "year": 2012, "age_label": "U14", "pos": "Left Winger", "major": "Forward", "club": "Chongqing Lvyin", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Zhou Haoran", "en": "Zhou Haoran", "cn": "周皓苒", "alias": "", "year": 2012, "age_label": "U14", "pos": "Central Midfield", "major": "Midfielder", "club": "Chongqing Lvyin", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Li Haozheng", "en": "Li Haozheng", "cn": "李浩正", "alias": "", "year": 2012, "age_label": "U14", "pos": "Centre-Forward", "major": "Forward", "club": "Dalian Yingbo", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Sun Nianshuo", "en": "Sun Nianshuo", "cn": "孙年朔", "alias": "", "year": 2012, "age_label": "U14", "pos": "Central Midfield", "major": "Midfielder", "club": "Dalian Yingbo", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Hu Yule", "en": "Hu Yule", "cn": "胡宇乐", "alias": "", "year": 2012, "age_label": "U14", "pos": "Right Winger", "major": "Forward", "club": "Xi'an Gaoxin Yilian", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Fei Yufan", "en": "Fei Yufan", "cn": "费禹凡", "alias": "", "year": 2012, "age_label": "U14", "pos": "Attacking Midfield", "major": "Midfielder", "club": "Shenzhen 2028", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Li Aohan", "en": "Li Aohan", "cn": "李翱瀚", "alias": "", "year": 2012, "age_label": "U14", "pos": "Left Winger", "major": "Forward", "club": "Shenzhen 2028", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Tang Tieming", "en": "Tang Tieming", "cn": "唐铁铭", "alias": "", "year": 2012, "age_label": "U14", "pos": "Right Winger", "major": "Forward", "club": "Shenzhen 2028", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Yan Zihao", "en": "Yan Zihao", "cn": "严子皓", "alias": "", "year": 2012, "age_label": "U14", "pos": "Left-Back", "major": "Defender", "club": "Shenzhen 2028", "country": "China", "note": "", "tags": [], "watch": false, "photo": ""}, {"name": "Zhong Junhui", "en": "Zhong Junhui", "cn": "钟俊辉", "alias": "", "year": 2011, "age_label": "U15", "pos": "Left Winger", "major": "Forward", "club": "Fujian Longyan Sports School", "country": "China", "note": "A good dribbler who beats his man; physically still on the small side.", "tags": [], "watch": true, "photo": ""}, {"name": "Yu Jiawei", "en": "Yu Jiawei", "cn": "余嘉威", "alias": "", "year": 2011, "age_label": "U15", "pos": "Centre-Forward", "major": "Forward", "club": "Evergrande academy", "country": "China", "note": "", "tags": [], "watch": true, "photo": ""}, {"name": "Meng Ziyao", "en": "Meng Ziyao", "cn": "孟子尧", "alias": "", "year": 2012, "age_label": "U14", "pos": "Centre-Forward", "major": "Forward", "club": "Evergrande academy", "country": "China", "note": "A tall centre-forward with some dribbling ability.", "tags": [], "watch": true, "photo": ""}, {"name": "Xie Wang", "en": "Xie Wang", "cn": "谢望", "alias": "", "year": 2013, "age_label": "U13", "pos": "Attacking Midfield", "major": "Midfielder", "club": "Dalian Hi-Ball", "country": "China", "note": "Equally strong with either foot, excellent at beating his man and a strong finisher with sound attacking instincts. Could become one of the standout players of China’s 2013 group.", "tags": [], "watch": true, "photo": "../images/players_2011plus/Xie_Wang.png"}, {"name": "Li Wenhao", "en": "Li Wenhao", "cn": "李文皓", "alias": "", "year": 2013, "age_label": "U13", "pos": "Left Winger", "major": "Forward", "club": "Dalian FA", "country": "China", "note": "Physically strong, good at beating his man, an excellent dribbler and a tidy passer.", "tags": [], "watch": true, "photo": ""}, {"name": "Yuan Yuxi", "en": "Yuan Yuxi", "cn": "袁宇熙", "alias": "", "year": 2013, "age_label": "U13", "pos": "Central Midfield", "major": "Midfielder", "club": "Dalian Hi-Ball", "country": "China", "note": "A well-rounded, all-action midfielder with excellent close control, good vision and a solid physical base.", "tags": [], "watch": true, "photo": ""}]};</script>
+<script>
+// ================= Player Profiles (v2 skin) =================
+const pd = DATA.players || [];
+const YRS = (DATA.years || []).map(y => y.year);
+const pdPhoto = (p, size, cls) => p.photo
+  ? `<div class="${cls}" style="width:${size}px;height:${size}px"><img src="${p.photo}" alt="${p.name}" loading="lazy" onerror="this.parentNode.innerHTML='${(p.name||'?').charAt(0).toUpperCase()}'"></div>`
+  : `<div class="${cls}" style="width:${size}px;height:${size}px">${(p.name||"?").charAt(0).toUpperCase()}</div>`;
+const displayPos = p => p.pos || p.major || "Unknown";
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function tagsHTML(p, withWatch){
+  const t = (p.tags || []).map(x => `<span class="ev"><i class="dot" style="background:#5d6b84;box-shadow:none"></i>${esc(x)}</span>`);
+  if (withWatch && p.watch) t.unshift(`<span class="ev watch"><i class="dot"></i>Watch</span>`);
+  return t.join("");
+}
+// 下方球员卡（该年段全部球员，含关注栏出现过的球员）
+function pdCardHTML(p){
+  return `<div class="pd-card" data-name="${esc(p.name)}" data-year="${p.year}">
+    <div class="pd-top">
+      ${pdPhoto(p, 64, "pd-ph")}
+      <div class="pd-nm">
+        <div class="nm">${esc(p.name)}</div>
+        <div class="meta">${displayPos(p)} · ${esc(p.club || "-")}</div>
+      </div>
+      <div class="pd-pot" title="${p.age_label}">${p.age_label || p.year}</div>
+    </div>
+    <div class="pd-row">
+      <span class="stat b">${esc(p.cn || "")}</span>  ·  <span>${esc(p.country || "China")}</span> based
+    </div>
+    <div class="pd-eval">${tagsHTML(p, true)}</div>
+  </div>`;
+}
+// 关注栏大卡（竖版：一行排列、可左右滑动；比下方球员卡更大）
+function hlCardHTML(p){
+  return `<div class="hl-card" data-name="${esc(p.name)}" data-year="${p.year}">
+    ${pdPhoto(p, 132, "hl-ph")}
+    <div class="hl-nm">
+      <div class="nm">${esc(p.name)}</div>
+      ${p.cn ? `<div class="cn">${esc(p.cn)}${p.en && p.name !== p.en ? " / " + esc(p.en) : ""}</div>` : ""}
+      <div class="meta">${displayPos(p)} · ${esc(p.club || "-")} · ${esc(p.country || "China")}</div>
+    </div>
+    <div class="hl-badge">${p.age_label || p.year}</div>
+    ${p.note ? `<div class="hl-note">${esc(p.note)}</div>` : ""}
+    ${(p.tags || []).length ? `<div class="hl-tags">${(p.tags || []).map(x => `<span class="ev"><i class="dot" style="background:#FFD23F;box-shadow:0 0 8px #FFD23F"></i>${esc(x)}</span>`).join("")}</div>` : ""}
+  </div>`;
+}
+const state = { q:"", sort:"default", dir:1, pos:"All" };
+const SORTERS = {
+  default: (a, b) => a._i - b._i,
+  name:    (a, b) => a.name.localeCompare(b.name),
+  club:    (a, b) => (a.club || "").localeCompare(b.club || ""),
+};
+const PD = pd.map((p, i) => ({...p, _i:i}));
+function matches(p, q){
+  if (q && !((p.name||"").toLowerCase().includes(q) || (p.cn||"").includes(q) || (p.alias||"").toLowerCase().includes(q)
+            || (p.club||"").toLowerCase().includes(q)
+            || (p.pos||"").toLowerCase().includes(q)
+            || (p.country||"").toLowerCase().includes(q) || (p.tags||[]).join(" ").toLowerCase().includes(q))) return false;
+  if (state.pos !== "All") {
+    if (POS_MAJORS.includes(state.pos)) { if (p.major !== state.pos) return false; }
+    else if (p.pos !== state.pos) return false;
+  }
+  return true;
+}
+function renderAll(){
+  const q = state.q.toLowerCase();
+  const s = SORTERS[state.sort];
+  let shown = 0;
+  for (const y of YRS){
+    const list = PD.filter(p => p.year === y && matches(p, q));
+    const sortFn = (a, b) => (state.sort === "name" || state.sort === "club") ? s(a, b) : s(a, b) * state.dir;
+    const sorted = [...list].sort(sortFn);
+    const watch = sorted.filter(p => p.watch);
+    const row = document.getElementById("hlRow-" + y);
+    row.innerHTML = watch.map(hlCardHTML).join("");
+    document.getElementById("hlBand-" + y).style.display = watch.length ? "" : "none";
+    // 渲染后测量：不足一屏则不显示「可滑动」提示与左右按钮
+    const hint = document.getElementById("hlHint-" + y);
+    const nav = document.querySelector(`.hl-nav[data-yr="${y}"]`);
+    const canScroll = row.scrollWidth > row.clientWidth + 5;
+    hint.textContent = watch.length ? (canScroll ? `${watch.length} players · scroll →` : `${watch.length} players`) : "";
+    if (nav) nav.style.display = canScroll ? "" : "none";
+    document.getElementById("pdGrid-" + y).innerHTML = sorted.map(pdCardHTML).join("");
+    document.getElementById("secCount-" + y).textContent =
+      `${sorted.length} players · ${watch.length} in watch bar`;
+    document.getElementById("y" + y).style.display = (sorted.length || watch.length) ? "" : "none";
+    shown += sorted.length;
+  }
+  document.getElementById("pdCount").innerHTML = `<b>${shown}</b> / ${pd.length} players`;
+  document.querySelectorAll(".pd-card, .hl-card").forEach(c =>
+    c.addEventListener("click", () => openPD(c.getAttribute("data-name"))));
+  updatePosCounts();
+}
+document.getElementById("pdSearch").addEventListener("input", e => { state.q = e.target.value.trim(); renderAll(); });
+// 关注栏左右滑动按钮（按卡片宽度翻页）
+document.querySelectorAll(".hl-nav .dir-btn").forEach(btn => {
+  btn.addEventListener("click", ev => {
+    ev.stopPropagation();
+    const row = document.getElementById("hlRow-" + btn.getAttribute("data-yr"));
+    const card = row.querySelector(".hl-card");
+    const step = card ? (card.getBoundingClientRect().width + 16) * 2 : 400;
+    row.scrollBy({ left: step * Number(btn.getAttribute("data-scroll")), behavior: "smooth" });
+  });
+});
+document.getElementById("pdSort").addEventListener("change", e => { state.sort = e.target.value; renderAll(); });
+document.getElementById("pdDir").addEventListener("click", () => {
+  state.dir *= -1;
+  document.getElementById("pdDir").textContent = state.dir === 1 ? "↓" : "↑";
+  renderAll();
+});
+
+// ---- position dropdown（与 v2 同结构：major -> fine） ----
+const POS_MAJORS = ["Goalkeeper", "Defender", "Midfielder", "Forward"];
+const POS_ORDER = ["Goalkeeper", "Centre-Back", "Right-Back", "Left-Back",
+  "Defensive Midfield", "Central Midfield", "Attacking Midfield", "Right Midfield", "Left Midfield",
+  "Left Winger", "Right Winger", "Centre-Forward", "Second Striker"];
+const POS_FINE = [];
+{
+  const seen = new Set();
+  for (const p of pd) {
+    if (!p.pos || seen.has(p.pos + "|" + p.major)) continue;
+    seen.add(p.pos + "|" + p.major);
+    POS_FINE.push({major: p.major, name: p.pos});
+  }
+  POS_FINE.sort((a, b) => {
+    const ia = POS_ORDER.indexOf(a.name), ib = POS_ORDER.indexOf(b.name);
+    return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+  });
+}
+const posGroupsEl = document.getElementById("pdPosGroups");
+const posCount = (major, fine) => fine
+  ? PD.filter(p => p.pos === fine).length
+  : PD.filter(p => p.major === major).length;
+function updatePosCounts(){
+  document.querySelectorAll(".pos-g").forEach(g => {
+    const c = g.querySelector(".pos-count");
+    if (c) c.textContent = posCount(g.getAttribute("data-major"));
+  });
+  document.querySelectorAll(".pos-items .pos-i").forEach(i => {
+    const c = i.querySelector(".pos-count");
+    if (c) c.textContent = posCount(null, i.getAttribute("data-pos"));
+  });
+}
+posGroupsEl.innerHTML = POS_MAJORS.map(major => {
+  const items = POS_FINE.filter(d => d.major === major).map(d => d.name);
+  if (!items.length) return "";
+  return `<div class="pos-group" data-major="${major}">
+    <button class="pos-g" type="button" data-major="${major}"><span class="arr">▸</span>${major}<span class="pos-count"></span></button>
+    <div class="pos-items">${items.map(nm => `<button class="pos-i" type="button" data-pos="${nm}"><span>${nm}</span><span class="pos-count"></span></button>`).join("")}</div>
+  </div>`;
+}).join("");
+function updatePosBtn(){
+  document.getElementById("pdPosBtn").textContent = "Position: " + state.pos + " ▾";
+  posGroupsEl.querySelectorAll(".pos-g").forEach(g => g.classList.toggle("on", g.getAttribute("data-major") === state.pos));
+  posGroupsEl.querySelectorAll(".pos-i").forEach(i => i.classList.toggle("on", i.getAttribute("data-pos") === state.pos));
+  document.querySelector(".pos-i.top").classList.toggle("on", state.pos === "All");
+}
+const pdPosBtn = document.getElementById("pdPosBtn");
+const pdPosMenu = document.getElementById("pdPosMenu");
+pdPosBtn.addEventListener("click", e => { e.stopPropagation(); pdPosMenu.classList.toggle("show"); });
+document.addEventListener("click", e => { if (!pdPosMenu.contains(e.target) && e.target !== pdPosBtn) pdPosMenu.classList.remove("show"); });
+posGroupsEl.addEventListener("click", e => {
+  const g = e.target.closest(".pos-g");
+  if (g) {
+    const group = g.parentElement;
+    const wasOpen = group.classList.contains("open");
+    posGroupsEl.querySelectorAll(".pos-group.open").forEach(x => x.classList.remove("open"));
+    if (!wasOpen) { group.classList.add("open"); state.pos = g.getAttribute("data-major"); }
+    updatePosBtn(); renderAll();
+    return;
+  }
+  const i = e.target.closest(".pos-i");
+  if (i && i !== pdPosMenu.querySelector(".pos-i.top")) {
+    state.pos = i.getAttribute("data-pos");
+    pdPosMenu.classList.remove("show");
+    updatePosBtn(); renderAll();
+  }
+});
+document.querySelector(".pos-i.top").addEventListener("click", () => {
+  state.pos = "All"; pdPosMenu.classList.remove("show"); updatePosBtn(); renderAll();
+});
+
+// ================= Player Modal (v2 skin) =================
+function openPD(name){
+  const p = pd.find(x => x.name === name);
+  if (!p) return;
+  const tags = (p.tags || []).map(t => `<span class="attr-chip" style="background:#3aa76d">${esc(t)}</span>`).join("");
+  const strip = [["Age group", p.age_label ? p.age_label + " (" + p.year + ")" : String(p.year), "#0D99FF"],
+                 ["Position", displayPos(p), "#7B61FF"],
+                 ["Based", p.country || "China", "#00C853"]]
+    .map(([k, v, c]) => `<div class="pm-cell"><div class="pk">${k}</div><div class="pv" style="color:${c}">${esc(v)}</div></div>`).join("");
+  document.getElementById("pdModal").innerHTML = `
+    <button class="cls" onclick="closePD()">✕</button>
+    <div class="pm-head">
+      ${pdPhoto(p, 76, "pm-ph")}
+      <div class="pm-id">
+        <div class="pm-name">${esc(p.name)}${p.watch ? ` <span class="stars" style="color:var(--gold);font-size:15px">★ watch</span>` : ""}</div>
+        <div class="pm-meta">${[p.cn, p.alias, displayPos(p), p.club, p.country].filter(Boolean).map(esc).join(" · ")}</div>
+      </div>
+    </div>
+    <div class="pm-strip">${strip}</div>
+    <div class="pm-grid2">
+      <div class="pm-sec"><h4>Details</h4><div class="pm-rows">
+        <div><b>Age group</b><div class="v">${p.age_label ? p.age_label + " (" + p.year + ")" : p.year}</div></div>
+        <div><b>Position</b><div class="v">${displayPos(p)}</div></div>
+        <div><b>Club / academy</b><div class="v">${esc(p.club || "-")}</div></div>
+        <div><b>Based</b><div class="v">${esc(p.country || "China")}</div></div>
+        ${p.alias ? `<div><b>Also written</b><div class="v">${esc(p.alias)}</div></div>` : ""}
+      </div></div>
+      ${(p.tags || []).length ? `<div class="pm-sec"><h4>Tags</h4><div class="pm-rows"><div><b>Markers</b><div class="attr-chips" style="margin-top:4px">${tags}</div></div></div></div>` : ""}
+    </div>
+    ${p.note ? `<div class="pm-sec"><h4>Overview</h4><div style="font-size:13px;line-height:1.8;color:var(--tx2)">${esc(p.note)}</div></div>` : ""}
+    <div class="pm-foot">Data updated: ${DATA.generated}</div>`;
+  document.getElementById("pdOverlay").classList.add("show");
+}
+function closePD(){ document.getElementById("pdOverlay").classList.remove("show"); }
+document.getElementById("pdOverlay").addEventListener("click", e => { if (e.target.id === "pdOverlay") closePD(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closePD(); });
+renderAll();
+</script>
+</body>
+</html>
