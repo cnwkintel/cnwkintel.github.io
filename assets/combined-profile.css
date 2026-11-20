@@ -1,0 +1,66 @@
+.pd-eval{display:flex; align-items:center; flex-wrap:wrap; gap:7px 10px; margin-top:9px; min-height:15px}
+.pd-eval .ev{display:inline-flex; align-items:center; gap:5px; font-size:10.5px; font-weight:650; color:var(--tx2); letter-spacing:.2px}
+.pd-eval .dot{width:7px; height:7px; border-radius:50%; display:inline-block; flex-shrink:0}
+.pd-eval .note{color:var(--blue); font-size:12px; cursor:default}
+/* 有 Detailed Overview 的球员：铅笔标记转金色 */
+.pd-eval .note.gold{color:var(--gold)}
+
+.pd-modal{background:linear-gradient(180deg,#0c1428,#0a1122); border:1px solid var(--line); border-radius:18px;
+  max-width:780px; width:100%; padding:26px 28px; box-shadow:0 24px 70px rgba(0,0,0,.5); position:relative; animation:pop .18s ease}
+@keyframes pop{from{opacity:0; transform:translateY(12px) scale(.985)} to{opacity:1; transform:none}}
+.pd-modal .cls{position:absolute; top:14px; right:16px; border:1px solid var(--line); background:rgba(255,255,255,.06);
+  border-radius:50%; width:32px; height:32px; font-size:14px; cursor:pointer; color:var(--tx2); transition:.15s}
+.pd-modal .cls:hover{color:var(--tx); background:rgba(255,255,255,.14)}
+.pm-head{display:flex; gap:16px; align-items:flex-start; padding-right:36px}
+.pm-ph{width:76px; height:76px; border-radius:18px; overflow:hidden; flex-shrink:0; background:linear-gradient(135deg,#1c2a44,#24385e);
+  display:flex; align-items:center; justify-content:center; font-size:30px; font-weight:800; color:#7fa8d9}
+.pm-ph img{width:100%; height:100%; object-fit:cover}
+.pm-id{flex:1; min-width:0}
+.pm-name{font-size:23px; font-weight:800; letter-spacing:-.3px; margin:0}
+.pm-name .stars{color:var(--gold); font-size:15px; letter-spacing:2px; vertical-align:2px}
+.pm-meta{font-size:12.5px; color:var(--tx2); margin-top:4px; display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+.nt-badge{font-size:10px; font-weight:700; letter-spacing:.5px; padding:2px 9px; border-radius:12px;
+  background:rgba(0,200,83,.13); color:#4ade80; border:1px solid rgba(0,200,83,.35)}
+/* 评估条：替代头部胶囊标签，结构化四格仪表盘 */
+.pm-strip{display:grid; grid-template-columns:repeat(auto-fit,minmax(118px,1fr)); gap:10px; margin-top:14px}
+.pm-cell{background:rgba(255,255,255,.035); border:1px solid var(--line); border-radius:12px; padding:10px 13px 11px;
+  transition:border-color .15s}
+.pm-cell:hover{border-color:rgba(255,255,255,.22)}
+.pm-cell .pk{font-size:9.5px; letter-spacing:1.3px; text-transform:uppercase; color:var(--tx3); font-weight:650}
+.pm-cell .pv{font-size:15.5px; font-weight:750; margin-top:5px; line-height:1.15}
+.pm-cell .pv small{font-size:10px; font-weight:600; opacity:.75; margin-left:4px}
+.pm-rt{flex-shrink:0; text-align:center; background:rgba(255,255,255,.045); border:1px solid var(--line); border-radius:14px;
+  padding:12px 16px 10px; min-width:96px}
+.pm-rt .big{font-size:30px; font-weight:800; line-height:1}
+.pm-rt .sm{font-size:10.5px; color:var(--tx3); margin-top:5px; line-height:1.4}
+.pm-sec{background:rgba(255,255,255,.035); border:1px solid var(--line); border-radius:13px; padding:14px 16px; margin-top:14px}
+.pm-sec h4{margin:0 0 9px; font-size:12px; color:var(--blue); letter-spacing:1.4px; text-transform:uppercase; font-weight:700}
+.pm-grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+@media (max-width:640px){ .pm-grid2{grid-template-columns:1fr} }
+.pm-rows{display:grid; grid-template-columns:1fr 1fr; gap:6px 18px; font-size:13px; line-height:1.85}
+.pm-rows b{color:var(--tx); font-weight:600}
+.pm-rows .v{color:var(--tx2)}
+.pm-assess{display:grid; grid-template-columns:1fr 1fr; gap:9px}
+.pm-assess .cell{background:rgba(255,255,255,.03); border:1px solid var(--line); border-radius:10px; padding:10px 13px}
+.pm-assess .k{font-size:10.5px; color:var(--tx3); letter-spacing:1px; text-transform:uppercase}
+.pm-assess .v2{font-size:15px; font-weight:700; margin-top:3px}
+.pm-foot{font-size:11px; color:var(--tx3); margin-top:16px; padding-top:12px; border-top:1px solid var(--line)}
+/* ---------- 多版本 overview（带日期，可切换；默认显示最新一版） ---------- */
+.ov-tabs{display:flex; flex-wrap:wrap; gap:8px; margin:2px 0 12px}
+.ov-tab{display:inline-flex; align-items:center; gap:8px; font:inherit; font-size:11.5px; font-weight:650;
+  color:var(--tx2); background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:20px;
+  padding:5px 13px; cursor:pointer; transition:color .15s, border-color .15s, background .15s}
+.ov-tab:hover{color:var(--tx); border-color:rgba(255,255,255,.24)}
+.ov-tab.on{color:#06101f; background:var(--blue); border-color:var(--blue)}
+.ov-tab .d{font-variant-numeric:tabular-nums; letter-spacing:.3px; font-weight:750; opacity:.85}
+.ov-tab.on .d{opacity:1}
+.ov-date{display:inline-block; font-size:11px; font-weight:700; color:var(--tx3); letter-spacing:.4px;
+  border:1px solid var(--line); border-radius:12px; padding:2px 10px; margin-bottom:9px}
+.ov-body{display:none; font-size:13px; line-height:1.85; color:var(--tx2);
+  max-height:420px; overflow-y:auto; padding-right:6px; scrollbar-width:thin; scrollbar-color:#33405c transparent}
+.ov-body.on{display:block}
+.ov-body p{margin:0 0 10px}
+.ov-body p:last-child{margin-bottom:0}
+.ov-note{font-size:10.5px; color:var(--tx3); margin-top:11px}
+.attr-chips{display:flex; flex-wrap:wrap; gap:6px}
+.attr-chip{display:inline-block; font-size:12px; color:#fff; padding:3px 11px; border-radius:12px; font-weight:600}
